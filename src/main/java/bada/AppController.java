@@ -11,12 +11,16 @@ import java.util.List;
 public class AppController {
 
     @Autowired
-    private SalesDAO dao;
+    private CourtsDAO dao;
 
     @RequestMapping("/")
     public String viewHomePage(Model model) {
-        List<Sale> listSale = dao.list();
-        model.addAttribute("listSale", listSale);
+        //List<Sale> listSale = dao.list();
+        //model.addAttribute("listSale", listSale);
+
+        List<Court> courtList = dao.list();
+        model.addAttribute("courtList", courtList);
+
         return "index";
     }
 
