@@ -1,29 +1,29 @@
 package bada;
 
 public class Court {
-    private int court_ID;
+    private int id;
     private String name;
     private String address;
-    private int opening_hour;
-    private int closing_hour;
+    private int openingHour;
+    private int closingHour;
 
     public Court(){
     }
 
-    public Court(int court_ID, String name, String address, int opening_hour, int closing_hour){
-        this.court_ID = court_ID;
+    public Court(int id, String name, String address, int openingHour, int closingHour){
+        this.id = id;
         this.name = name;
         this.address = address;
-        this.opening_hour = opening_hour;
-        this.closing_hour = closing_hour;
+        this.openingHour = openingHour;
+        this.closingHour = closingHour;
     }
 
-    public int getCourt_ID() {
-        return court_ID;
+    public int getId() {
+        return id;
     }
 
-    public void setCourt_ID(int court_ID) {
-        this.court_ID = court_ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -43,30 +43,30 @@ public class Court {
     }
 
 
-    public int getOpening_hour() {
-        return opening_hour;
+    public int getOpeningHour() {
+        return openingHour;
     }
 
-    public void setOpening_hour(int opening_hour) {
-        this.opening_hour = opening_hour;
+    public void setOpeningHour(int openingHour) {
+        this.openingHour = openingHour;
     }
 
-    public int getClosing_hour() {
-        return closing_hour;
+    public int getClosingHour() {
+        return closingHour;
     }
 
-    public void setClosing_hour(int closing_hour) {
-        this.closing_hour = closing_hour;
+    public void setClosingHour(int closingHour) {
+        this.closingHour = closingHour;
     }
 
     @Override
     public String toString() {
         return "bada.Court [" +
-                "court_ID=" + court_ID +
+                "ID=" + id +
                 ", name='" + name +
                 ", address='" + address +
-                ", opening_hour=" + opening_hour +
-                ", closing_hour=" + closing_hour +
+                ", opening_hour=" + openingHour +
+                ", closing_hour=" + closingHour +
                 ']';
     }
 }
