@@ -32,7 +32,12 @@
             <td th:text="${court.address}">Address</td>
             <td th:text="${court.openingHour}">Opening hour</td>
             <td th:text="${court.closingHour}">Closing hour</td>
-            <td><a th:href="@{'/edit/' + ${court.id}}">Edit</a></td>
+            <td>
+                <a th:href="@{'/edit/' + ${court.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete/' + ${court.id}}">Delete</a>
+            </td>
+
         </tr>
         </tbody>
     </table>

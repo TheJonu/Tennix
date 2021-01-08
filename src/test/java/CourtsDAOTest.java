@@ -50,4 +50,10 @@ public class CourtsDAOTest {
         court.setOpeningHour(0);
         court.setClosingHour(24);
     }
+
+    @Test
+    public void testDelete() {
+        int id = 2;
+        dao.delete(2);
+    }
 }

@@ -46,8 +46,14 @@ public class AppController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String Update(@ModelAttribute("court") Court court){
+    public String update(@ModelAttribute("court") Court court){
         dao.update(court);
+        return "redirect:/";
+    }
+
+    @RequestMapping("delete/{id}")
+    public String delete(@PathVariable(name = "id") int id){
+        dao.delete(id);
         return "redirect:/";
     }
 }

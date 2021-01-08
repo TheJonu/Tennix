@@ -48,7 +48,8 @@ public class CourtsDAO {
     }
 
     public void delete(int id) {
-
+        String sql = "DELETE FROM Courts WHERE id = ?";
+        jdbcTemplate.update(sql, id);
     }
 
 }
