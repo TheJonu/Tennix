@@ -6,8 +6,10 @@ public class Court {
     private String address;
     private int openingHour;
     private int closingHour;
+    private boolean[][] windows = new boolean[24][5];
 
     public Court(){
+        this.windows[1][1] = true;
     }
 
     public Court(int id, String name, String address, int openingHour, int closingHour){
@@ -16,6 +18,7 @@ public class Court {
         this.address = address;
         this.openingHour = openingHour;
         this.closingHour = closingHour;
+        this.windows[1][1] = true;
     }
 
     public int getId() {
@@ -42,7 +45,6 @@ public class Court {
         this.address = address;
     }
 
-
     public int getOpeningHour() {
         return openingHour;
     }
@@ -57,6 +59,14 @@ public class Court {
 
     public void setClosingHour(int closingHour) {
         this.closingHour = closingHour;
+    }
+
+    public boolean[][] getWindows() {
+        return windows;
+    }
+
+    public void setWindows(boolean[][] windows) {
+        this.windows = windows;
     }
 
     @Override

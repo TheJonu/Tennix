@@ -32,7 +32,7 @@ public class AppController {
     }
 
     @RequestMapping("/save")
-    public String save(@ModelAttribute("sale") Court court){
+    public String save(@ModelAttribute("court") Court court){
         dao.save(court);
         return "redirect:/";
     }
@@ -56,4 +56,15 @@ public class AppController {
         dao.delete(id);
         return "redirect:/";
     }
+
+    // NEW
+
+    @RequestMapping("timetable/{id}")
+    public ModelAndView showTimetable(@PathVariable(name = "id") int id){
+        ModelAndView mav = new ModelAndView("timetable");
+        Court court = dao.get(id);
+        mav.addObject("court", court);
+        return mav;
+    }
+
 }
