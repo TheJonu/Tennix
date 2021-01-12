@@ -3,35 +3,42 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>New Court</title>
+    <title>Edit Court</title>
 </head>
 <body>
 <div align="center">
-    <h1>Enter New Court</h1>
-    <br/>
+    <h1>Edit Court</h1>
+    <p>
+        <a href="/court_list">court list</a>
+        <br/>
+    </p>
     <form action="#"
-          th:action="@{/save}"
+          th:action="@{/update_court}"
           th:object="${court}"
           method="post">
         <table border="1" cellpadding="10">
             <tr>
-                <td>Name</td>
+                <td>ID:</td>
+                <td><input type="text" th:field="*{id}" readonly></td>
+            </tr>
+            <tr>
+                <td>Name:</td>
                 <td><input type="text" th:field="*{name}"></td>
             </tr>
             <tr>
-                <td>Address</td>
+                <td>Address:</td>
                 <td><input type="text" th:field="*{address}"></td>
             </tr>
             <tr>
-                <td>Opening Hour</td>
+                <td>Opening hour:</td>
                 <td><input type="text" th:field="*{openingHour}"></td>
             </tr>
             <tr>
-                <td>Closing Hour</td>
+                <td>Closing hour:</td>
                 <td><input type="text" th:field="*{closingHour}"></td>
             </tr>
             <tr>
-                <td colspan="2"><button type="submit">Add</button></td>
+                <td align="center" colspan="2"><button type="submit">Save</button></td>
             </tr>
         </table>
     </form>

@@ -28,7 +28,7 @@ public class BookingsDao {
     // add a new booking
     public void save(Booking booking) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
-        insertActor.withTableName("bookings").usingColumns("day", "hour", "court_id", "client_id", "employee_id");
+        insertActor.withTableName("bookings").usingColumns("day", "hour", "court_id", "client_id");
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(booking);
         insertActor.execute(param);
     }

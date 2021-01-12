@@ -9,40 +9,11 @@
 </head>
 <body>
 <div align="center">
-    <h1>Court List</h1>
-    <a href="/new">Add a court</a>
-    <br/>
-    <br/>
-    <table border="1" cellpadding="10">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Opening hour</th>
-            <th>Closing hour</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-
-        <tr th:each="court : ${courtList}">
-            <td th:text="${court.id}">ID</td>
-            <td th:text="${court.name}">Name</td>
-            <td th:text="${court.address}">Address</td>
-            <td th:text="${court.openingHour}">Opening hour</td>
-            <td th:text="${court.closingHour}">Closing hour</td>
-            <td>
-                <a th:href="@{'/edit/' + ${court.id}}">Edit</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/delete/' + ${court.id}}">Delete</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/timetable/' + ${court.id}}">Timetable</a>
-            </td>
-
-        </tr>
-        </tbody>
-    </table>
+    <h1>Tennis Manager</h1>
+    <p>
+        <a href="/court_list">court list</a>
+        <br/>
+    </p>
 </div>
 </body>
 </html>

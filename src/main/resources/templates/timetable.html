@@ -8,14 +8,21 @@
 <body>
 <div align="center">
     <h1>Timetable</h1>
+    <p>
+        <a href="/court_list">court list</a>
+        <br/>
+    </p>
     <h2 th:text="${court.name}">Court Name</h2>
-    <p>Address: <span th:text="${court.address}">address</span></p>
-    <p>Open <span th:text="${court.openingHour}">9</span>-<span th:text="${court.closingHour}">5</span></p>
-    <br/>
+    <p>
+        <a>Address: <span th:text="${court.address}">address</span></a>
+        <br/>
+        <a>Open: <span th:text="${court.getOpeningHours()}">0:00 - 0:00</span></a>
+        <br/>
+    </p>
     <table border="1" cellpadding="10">
         <thead>
         <tr>
-            <th>hour</th>
+            <th>HOUR</th>
             <th>Monday</th>
             <th>Tuesday</th>
             <th>Wednesday</th>
@@ -24,11 +31,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="row, rowId : ${court.timetable}">
-            <td th:text="${rowId.index}">Hour</td>
-            <td th:each="value : ${row}">
-                <a th:switch="${value}">
-                    <a th:case="null">free</a>
+        <tr th:each="hour, hourId : ${court.timetable}">
+            <td th:text="${hourId.index + court.openingHour}">Hour</td>
+            <td th:each="day, dayId : ${hour}">
+                <a th:switch="${day}">
+                    <a th:case="null"
+                       th:href="@{/save_booking(day=${dayId.index}, hour=${hourId.index+court.openingHour}, court_id=${court.id})}">free</a>
                     <a th:case="*">taken</a>
                 </a>
             </td>

@@ -10,7 +10,7 @@ public class Court {
     private int openingHour;
     private int closingHour;
 
-    private Booking[][] timetable = new Booking[24][5];
+    private Booking[][] timetable;
 
 
     public Court(){
@@ -26,27 +26,20 @@ public class Court {
     }
 
 
-
-
     // set the timetable according to existing bookings
     public void refreshTimetable(List<Booking> bookings){
-        clearTimetable();
+        int hoursCount = closingHour-openingHour;
+        timetable = new Booking[hoursCount][5];
         for(int i=0; i<bookings.size(); i++){
              Booking booking = bookings.get(i);
-             this.timetable[booking.getHour()][booking.getDay()] = booking;
+             this.timetable[booking.getHour()-openingHour][booking.getDay()] = booking;
         }
     }
 
-    // clear the timetable
-    private void clearTimetable(){
-        for(int i=0; i<24; i++){
-            for(int j=0; j<5; j++){
-                timetable[i][j] = null;
-            }
-        }
+    // get opening hours string
+    public String getOpeningHours(){
+        return "" + openingHour + ":00 - " + closingHour + ":00";
     }
-
-
 
 
     public int getId() {

@@ -5,7 +5,7 @@ public class Booking {
     private int id;
     private int day;
     private int hour;
-    private int courtId;
+    private Integer courtId;
     private int clientId;
     private Integer employeeId; // nullable
 
@@ -14,12 +14,20 @@ public class Booking {
 
     }
 
-    public Booking(int id, int hour, int courtId, int clientId, Integer employeeId) {
+    public Booking(int id, int day, int hour, Integer courtId, int clientId, Integer employeeId) {
         this.id = id;
+        this.day = day;
         this.hour = hour;
         this.courtId = courtId;
         this.clientId = clientId;
         this.employeeId = employeeId;
+    }
+
+    public Booking(int day, int hour, Integer courtId, int clientId){
+        this.day = day;
+        this.hour = hour;
+        this.courtId = courtId;
+        this.clientId = clientId;
     }
 
 

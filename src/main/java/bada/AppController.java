@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @Controller
@@ -21,42 +22,42 @@ public class AppController {
 
     @RequestMapping("/")
     public String viewHomePage(Model model) {
-        List<Court> courtList = courtsDAO.get();
-        model.addAttribute("courtList", courtList);
+        //List<Court> courtList = courtsDAO.get();
+        //model.addAttribute("courtList", courtList);
         return "index";
     }
 
-    @RequestMapping("/new")
+    @RequestMapping("/new_court")
     public String showNewCourtForm(Model model){
         Court court = new Court();
         model.addAttribute("court", court);
-        return "new_form";
+        return "new_court";
     }
 
-    @RequestMapping("/save")
+    @RequestMapping("/save_court")
     public String saveCourt(@ModelAttribute("court") Court court){
         courtsDAO.save(court);
-        return "redirect:/";
+        return "redirect:/court_list";
     }
 
-    @RequestMapping("/edit/{id}")
+    @RequestMapping("/edit_court/{id}")
     public ModelAndView showEditCourtForm(@PathVariable(name="id") int id){
-        ModelAndView mav = new ModelAndView("edit_form");
+        ModelAndView mav = new ModelAndView("edit_court");
         Court court = courtsDAO.get(id);
         mav.addObject("court", court);
         return mav;
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update_court", method = RequestMethod.POST)
     public String updateCourt(@ModelAttribute("court") Court court){
         courtsDAO.update(court);
-        return "redirect:/";
+        return "redirect:/court_list";
     }
 
-    @RequestMapping("delete/{id}")
+    @RequestMapping("delete_court/{id}")
     public String deleteCourt(@PathVariable(name = "id") int id){
         courtsDAO.delete(id);
-        return "redirect:/";
+        return "redirect:/court_list";
     }
 
     // show a court's timetable
@@ -71,10 +72,19 @@ public class AppController {
     }
 
     // create a booking
-    @RequestMapping("/saveBooking")
-    public String saveBooking(@ModelAttribute("booking") Booking booking){
+    @RequestMapping("/save_booking")
+    public String saveBooking(@PathParam("court_id") Integer courtId, @PathParam("day") int day, @PathParam("hour") int hour){
+        //System.out.println(court.getId());
+        Booking booking = new Booking(day, hour, courtId, 1); // temporary client ID
         bookingsDao.save(booking);
         return "timetable/" + booking.getCourtId();
     }
 
+    // show court list
+    @RequestMapping("/court_list")
+    public String showCourtList(Model model) {
+        List<Court> courtList = courtsDAO.get();
+        model.addAttribute("courtList", courtList);
+        return "court_list";
+    }
 }
