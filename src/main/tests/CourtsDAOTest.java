@@ -24,7 +24,7 @@ public class CourtsDAOTest {
 
     @Test
     public void testList() {
-        List<Court> courtList = dao.list();
+        List<Court> courtList = dao.get();
         assertFalse(courtList.isEmpty());
     }
 

@@ -1,15 +1,20 @@
 package bada;
 
+
+import java.util.List;
+
 public class Court {
     private int id;
     private String name;
     private String address;
     private int openingHour;
     private int closingHour;
-    private boolean[][] windows = new boolean[24][5];
+
+    private Booking[][] timetable = new Booking[24][5];
+
 
     public Court(){
-        this.windows[1][1] = true;
+
     }
 
     public Court(int id, String name, String address, int openingHour, int closingHour){
@@ -18,8 +23,31 @@ public class Court {
         this.address = address;
         this.openingHour = openingHour;
         this.closingHour = closingHour;
-        this.windows[1][1] = true;
     }
+
+
+
+
+    // set the timetable according to existing bookings
+    public void refreshTimetable(List<Booking> bookings){
+        clearTimetable();
+        for(int i=0; i<bookings.size(); i++){
+             Booking booking = bookings.get(i);
+             this.timetable[booking.getHour()][booking.getDay()] = booking;
+        }
+    }
+
+    // clear the timetable
+    private void clearTimetable(){
+        for(int i=0; i<24; i++){
+            for(int j=0; j<5; j++){
+                timetable[i][j] = null;
+            }
+        }
+    }
+
+
+
 
     public int getId() {
         return id;
@@ -61,13 +89,9 @@ public class Court {
         this.closingHour = closingHour;
     }
 
-    public boolean[][] getWindows() {
-        return windows;
-    }
+    public Booking[][] getTimetable() { return timetable; }
 
-    public void setWindows(boolean[][] windows) {
-        this.windows = windows;
-    }
+    public void setTimetable(Booking[][] bookings) { this.timetable = bookings; }
 
     @Override
     public String toString() {

@@ -3,13 +3,14 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Sales Manager App</title>
+    <title>Court Timetable</title>
 </head>
 <body>
 <div align="center">
     <h1>Timetable</h1>
     <h2 th:text="${court.name}">Court Name</h2>
-    <br/>
+    <p>Address: <span th:text="${court.address}">address</span></p>
+    <p>Open <span th:text="${court.openingHour}">9</span>-<span th:text="${court.closingHour}">5</span></p>
     <br/>
     <table border="1" cellpadding="10">
         <thead>
@@ -23,12 +24,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="row, rowId : ${court.windows}">
+        <tr th:each="row, rowId : ${court.timetable}">
             <td th:text="${rowId.index}">Hour</td>
             <td th:each="value : ${row}">
                 <a th:switch="${value}">
-                    <a th:case="true">taken</a>
-                    <a th:case="*">free</a>
+                    <a th:case="null">free</a>
+                    <a th:case="*">taken</a>
                 </a>
             </td>
         </tr>

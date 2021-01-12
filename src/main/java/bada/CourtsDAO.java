@@ -19,13 +19,23 @@ public class CourtsDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<Court> list(){
+    // get court list
+    public List<Court> get(){
         String sql = "SELECT * FROM Courts";
-        List<Court> courtList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Court.class));
-        return courtList;
+        List<Court> courts = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Court.class));
+        return courts;
     }
 
+    // get court by id
+    public Court get(int id) {
+        //Object[] args = {id};
+        //String sql = "SELECT * FROM Courts WHERE ID = " + args[0];
+        String sql = "SELECT * FROM Courts WHERE Id = " + id;
+        Court court = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Court.class));
+        return court;
+    }
 
+    // add new court
     public void save(Court court) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
         insertActor.withTableName("courts").usingColumns("name", "address", "opening_hour", "closing_hour");
@@ -33,13 +43,7 @@ public class CourtsDAO {
         insertActor.execute(param);
     }
 
-    public Court get(int id) {
-        Object[] args = {id};
-        String sql = "SELECT * FROM Courts WHERE ID = " + args[0];
-        Court court = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Court.class));
-        return court;
-    }
-
+    // modify existing court
     public void update(Court court) {
         String sql = "UPDATE Courts SET name=:name, address=:address, opening_hour=:openingHour, closing_hour=:closingHour WHERE id=:id";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(court);
@@ -47,6 +51,7 @@ public class CourtsDAO {
         template.update(sql, param);
     }
 
+    // delete a court
     public void delete(int id) {
         String sql = "DELETE FROM Courts WHERE id = ?";
         jdbcTemplate.update(sql, id);

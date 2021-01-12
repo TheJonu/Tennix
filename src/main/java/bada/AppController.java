@@ -15,56 +15,66 @@ import java.util.List;
 public class AppController {
 
     @Autowired
-    private CourtsDAO dao;
+    private CourtsDAO courtsDAO;
+    @Autowired
+    private BookingsDao bookingsDao;
 
     @RequestMapping("/")
     public String viewHomePage(Model model) {
-        List<Court> courtList = dao.list();
+        List<Court> courtList = courtsDAO.get();
         model.addAttribute("courtList", courtList);
         return "index";
     }
 
     @RequestMapping("/new")
-    public String showNewForm(Model model){
+    public String showNewCourtForm(Model model){
         Court court = new Court();
         model.addAttribute("court", court);
         return "new_form";
     }
 
     @RequestMapping("/save")
-    public String save(@ModelAttribute("court") Court court){
-        dao.save(court);
+    public String saveCourt(@ModelAttribute("court") Court court){
+        courtsDAO.save(court);
         return "redirect:/";
     }
 
     @RequestMapping("/edit/{id}")
-    public ModelAndView showEditForm(@PathVariable(name="id") int id){
+    public ModelAndView showEditCourtForm(@PathVariable(name="id") int id){
         ModelAndView mav = new ModelAndView("edit_form");
-        Court court = dao.get(id);
+        Court court = courtsDAO.get(id);
         mav.addObject("court", court);
         return mav;
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String update(@ModelAttribute("court") Court court){
-        dao.update(court);
+    public String updateCourt(@ModelAttribute("court") Court court){
+        courtsDAO.update(court);
         return "redirect:/";
     }
 
     @RequestMapping("delete/{id}")
-    public String delete(@PathVariable(name = "id") int id){
-        dao.delete(id);
+    public String deleteCourt(@PathVariable(name = "id") int id){
+        courtsDAO.delete(id);
         return "redirect:/";
     }
 
-    // NEW
-
+    // show a court's timetable
     @RequestMapping("timetable/{id}")
     public ModelAndView showTimetable(@PathVariable(name = "id") int id){
         ModelAndView mav = new ModelAndView("timetable");
-        Court court = dao.get(id);
+        Court court = courtsDAO.get(id);
+        List<Booking> bookings = bookingsDao.getByCourt(id);
+        court.refreshTimetable(bookings);
         mav.addObject("court", court);
         return mav;
+    }
+
+    // create a booking
+    @RequestMapping("/saveBooking")
+    public String saveBooking(@ModelAttribute("booking") Booking booking){
+        bookingsDao.save(booking);
+        return "timetable/" + booking.getCourtId();
     }
 
 }

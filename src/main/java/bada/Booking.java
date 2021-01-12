@@ -3,22 +3,25 @@ package bada;
 public class Booking {
 
     private int id;
+    private int day;
     private int hour;
-    private Court court;
-    private Client client;
-    private Employee employee;
+    private int courtId;
+    private int clientId;
+    private Integer employeeId; // nullable
+
 
     public Booking(){
 
     }
 
-    public Booking(int id, int hour, Court court, Client client, Employee employee) {
+    public Booking(int id, int hour, int courtId, int clientId, Integer employeeId) {
         this.id = id;
         this.hour = hour;
-        this.court = court;
-        this.client = client;
-        this.employee = employee;
+        this.courtId = courtId;
+        this.clientId = clientId;
+        this.employeeId = employeeId;
     }
+
 
     public int getId() {
         return id;
@@ -28,6 +31,10 @@ public class Booking {
         this.id = id;
     }
 
+    public int getDay() { return day; }
+
+    public void setDay(int day) { this.day = day; }
+
     public int getHour() {
         return hour;
     }
@@ -36,38 +43,34 @@ public class Booking {
         this.hour = hour;
     }
 
-    public Court getCourt() {
-        return court;
+    public int getCourtId() {
+        return courtId;
     }
 
-    public void setCourt(Court court) {
-        this.court = court;
+    public void setCourtId(int courtId) {
+        this.courtId = courtId;
     }
 
-    public Client getClient() {
-        return client;
+    public int getClientId() {
+        return clientId;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClientId(int clientId) { this.clientId = clientId; }
+
+    public Integer getEmployeeId() {
+        return employeeId;
     }
 
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
+    public void setEmployeeId(Integer employeeId) { this.employeeId = employeeId; }
 
     @Override
     public String toString() {
         return "Booking{" +
                 "id=" + id +
                 ", hour=" + hour +
-                ", court=" + court +
-                ", client=" + client +
-                ", employee=" + employee +
+                ", court=" + courtId +
+                ", client=" + clientId +
+                ", employee=" + employeeId +
                 '}';
     }
 }
