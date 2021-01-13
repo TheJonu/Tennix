@@ -28,8 +28,6 @@ public class CourtsDAO {
 
     // get court by id
     public Court get(int id) {
-        //Object[] args = {id};
-        //String sql = "SELECT * FROM Courts WHERE ID = " + args[0];
         String sql = "SELECT * FROM Courts WHERE Id = " + id;
         Court court = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Court.class));
         return court;

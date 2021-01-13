@@ -43,7 +43,7 @@ public class ClientsDao {
 
     // modify existing court
     public void update(Client client) {
-        String sql = "UPDATE Clients SET login=:login, name=:name WHERE id=:id";
+        String sql = "UPDATE Clients SET first_name=:firstName, last_name=:lastName WHERE id=:id";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(client);
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
         template.update(sql, param);

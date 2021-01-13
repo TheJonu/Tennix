@@ -11,7 +11,7 @@
     <p>
         <a href="/">main page</a>
         <br/>
-        <a href="/new_court">add a court</a>
+        <a href="/court_new">new court</a>
         <br/>
     </p>
     <br/>
@@ -20,8 +20,6 @@
         <tr>
             <th>ID</th>
             <th>NAME</th>
-            <th>ADDRESS</th>
-            <th>HOURS</th>
             <th>ACTIONS</th>
         </tr>
         </thead>
@@ -30,14 +28,12 @@
         <tr th:each="court : ${courtList}">
             <td align="center" th:text="${court.id}">ID</td>
             <td th:text="${court.name}">Name</td>
-            <td th:text="${court.address}">Address</td>
-            <td align="center"><a th:text="${court.openingHour}">0</a>:00 - <a th:text="${court.closingHour}">0</a>:00</td>
             <td>
-                <a th:href="@{'/edit_court/' + ${court.id}}">Edit</a>
+                <a th:href="@{/court/{id}(id=${court.id})}">Info</a>
                 &nbsp;|&nbsp;
-                <a th:href="@{'/delete_court/' + ${court.id}}">Delete</a>
+                <a th:href="@{/court/{id}/edit(id=${court.id})}">Edit</a>
                 &nbsp;|&nbsp;
-                <a th:href="@{'/timetable/' + ${court.id}}">Timetable</a>
+                <a th:href="@{/court/{id}/delete(id=${court.id})}">Delete</a>
             </td>
 
         </tr>

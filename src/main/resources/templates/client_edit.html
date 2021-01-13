@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Client Edit</title>
+</head>
+<body>
+<div align="center">
+    <h1>Client Edit</h1>
+    <p>
+        <a href="/client_list">client list</a>
+        <br/>
+    </p>
+    <form action="#"
+          th:action="@{/client_update}"
+          th:object="${client}"
+          method="post">
+        <table border="1" cellpadding="10">
+            <tr>
+                <td>ID:</td>
+                <td><a th:text="${client.id}">ID</a></td>
+            </tr>
+            <tr>
+                <td>Login:</td>
+                <td><a th:text="${client.login}">Login</a></td>
+            </tr>
+            <tr>
+                <td>First Name:</td>
+                <td><input type="text" th:field="*{firstName}"></td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td><input type="text" th:field="*{lastName}"></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2"><button type="submit">Save</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

@@ -11,6 +11,8 @@
     <p>
         <a href="/">main page</a>
         <br/>
+        <a href="/client_new">new client</a>
+        <br/>
     </p>
     <br/>
     <table border="1" cellpadding="10">
@@ -28,7 +30,7 @@
         <tr th:each="client : ${clients}">
             <td align="center" th:text="${client.id}">ID</td>
             <td th:text="${client.login}">Login</td>
-            <td> <a th:text="${client.firstName}">First name</a>&nbsp;<a th:text="${client.firstName}">Last name</a></td>
+            <td th:text="${client.getFullName()}">Full name</td>
             <td th:text="${client.getRegistrationDateString()}">Registration date</td>
             <td>
                 <a th:href="@{/client/{id}(id=${client.id})}">Info</a>

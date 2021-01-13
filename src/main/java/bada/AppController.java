@@ -29,42 +29,42 @@ public class AppController {
 
     // COURTS
 
-    @RequestMapping("/new_court")
+    @RequestMapping("/court_new")
     public String showNewCourtForm(Model model){
         Court court = new Court();
         model.addAttribute("court", court);
-        return "new_court";
+        return "court_new";
     }
 
-    @RequestMapping("/save_court")
+    @RequestMapping("/court_save")
     public String saveCourt(@ModelAttribute("court") Court court){
         courtsDAO.save(court);
         return "redirect:/court_list";
     }
 
-    @RequestMapping("/edit_court/{id}")
+    @RequestMapping("/court/{id}/edit")
     public ModelAndView showEditCourtForm(@PathVariable(name="id") int id){
-        ModelAndView mav = new ModelAndView("edit_court");
+        ModelAndView mav = new ModelAndView("court_edit");
         Court court = courtsDAO.get(id);
         mav.addObject("court", court);
         return mav;
     }
 
-    @RequestMapping(value = "/update_court", method = RequestMethod.POST)
+    @RequestMapping(value = "/court_update", method = RequestMethod.POST)
     public String updateCourt(@ModelAttribute("court") Court court){
         courtsDAO.update(court);
         return "redirect:/court_list";
     }
 
-    @RequestMapping("/delete_court/{id}")
+    @RequestMapping("/court/{id}/delete")
     public String deleteCourt(@PathVariable(name = "id") int id){
         courtsDAO.delete(id);
         return "redirect:/court_list";
     }
 
-    @RequestMapping("/timetable/{id}")
-    public ModelAndView showTimetable(@PathVariable(name = "id") int id){
-        ModelAndView mav = new ModelAndView("timetable");
+    @RequestMapping("/court/{id}")
+    public ModelAndView showCourt(@PathVariable(name = "id") int id){
+        ModelAndView mav = new ModelAndView("court");
         Court court = courtsDAO.get(id);
         List<Booking> bookings = bookingsDao.getByCourt(id);
         court.refreshTimetable(bookings);
@@ -72,12 +72,12 @@ public class AppController {
         return mav;
     }
 
-    @RequestMapping("/timetable/{id}/save_booking")
+    @RequestMapping("/court/{id}/save_booking")
     public String saveBooking(@PathVariable int id, @PathParam("day") int day, @PathParam("hour") int hour){
         System.out.println(id);
         Booking booking = new Booking(day, hour, 23, 1); // temporary client ID
         bookingsDao.save(booking);
-        return "redirect:/timetable/" + booking.getCourtId();
+        return "redirect:/court/" + booking.getCourtId();
     }
 
     @RequestMapping("/court_list")
@@ -96,11 +96,11 @@ public class AppController {
         return "client_list";
     }
 
-    @RequestMapping("/client_register")
+    @RequestMapping("/client_new")
     public String showRegisterForm(Model model){
         Client client = new Client();
         model.addAttribute("client", client);
-        return "client_register";
+        return "client_new";
     }
 
     @RequestMapping("/client_save")
@@ -112,9 +112,15 @@ public class AppController {
     @RequestMapping("/client/{id}/edit")
     public ModelAndView showClientEditForm(@PathVariable(name="id") int id){
         ModelAndView mav = new ModelAndView("client_edit");
-        Court court = courtsDAO.get(id);
-        mav.addObject("court", court);
+        Client client = clientsDao.get(id);
+        mav.addObject("client", client);
         return mav;
+    }
+
+    @RequestMapping(value = "/client_update", method = RequestMethod.POST)
+    public String updateClient(@ModelAttribute("client") Client client){
+        clientsDao.update(client);
+        return "redirect:/client_list";
     }
 
     @RequestMapping("/client/{id}")
