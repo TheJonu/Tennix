@@ -73,11 +73,11 @@ public class AppController {
 
     // create a booking
     @RequestMapping("/save_booking")
-    public String saveBooking(@PathParam("court_id") Integer courtId, @PathParam("day") int day, @PathParam("hour") int hour){
-        //System.out.println(court.getId());
-        Booking booking = new Booking(day, hour, courtId, 1); // temporary client ID
+    public String saveBooking(@PathParam("day") int day, @PathParam("hour") int hour){
+        //System.out.println(courtId);
+        Booking booking = new Booking(day, hour, 23, 1); // temporary client ID
         bookingsDao.save(booking);
-        return "timetable/" + booking.getCourtId();
+        return "redirect:/timetable/" + booking.getCourtId();
     }
 
     // show court list

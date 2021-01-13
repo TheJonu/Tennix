@@ -36,7 +36,7 @@
             <td th:each="day, dayId : ${hour}">
                 <a th:switch="${day}">
                     <a th:case="null"
-                       th:href="@{/save_booking(day=${dayId.index}, hour=${hourId.index+court.openingHour}, court_id=${court.id})}">free</a>
+                       th:href="@{/save_booking(day=${dayId.index}, hour=${hourId.index+court.openingHour})}">free</a>
                     <a th:case="*">taken</a>
                 </a>
             </td>

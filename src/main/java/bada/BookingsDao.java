@@ -25,6 +25,13 @@ public class BookingsDao {
         return bookings;
     }
 
+    // get a client's bookings
+    public List<Booking> getByClient(int id){
+        String sql = "SELECT * FROM Bookings WHERE Client_id = " + id;
+        List<Booking> bookings = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Booking.class));
+        return bookings;
+    }
+
     // add a new booking
     public void save(Booking booking) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);

@@ -5,25 +5,27 @@ public class Booking {
     private int id;
     private int day;
     private int hour;
-    private Integer courtId;
+    private int courtId;
     private int clientId;
-    private Integer employeeId; // nullable
+    //private Integer employeeId; // nullable
 
 
     public Booking(){
 
     }
 
+    /*
     public Booking(int id, int day, int hour, Integer courtId, int clientId, Integer employeeId) {
         this.id = id;
         this.day = day;
         this.hour = hour;
         this.courtId = courtId;
         this.clientId = clientId;
-        this.employeeId = employeeId;
+        //this.employeeId = employeeId;
     }
+    */
 
-    public Booking(int day, int hour, Integer courtId, int clientId){
+    public Booking(int day, int hour, int courtId, int clientId){
         this.day = day;
         this.hour = hour;
         this.courtId = courtId;
@@ -51,9 +53,7 @@ public class Booking {
         this.hour = hour;
     }
 
-    public int getCourtId() {
-        return courtId;
-    }
+    public int getCourtId() { return courtId; }
 
     public void setCourtId(int courtId) {
         this.courtId = courtId;
@@ -65,11 +65,14 @@ public class Booking {
 
     public void setClientId(int clientId) { this.clientId = clientId; }
 
+    /*
     public Integer getEmployeeId() {
         return employeeId;
     }
 
     public void setEmployeeId(Integer employeeId) { this.employeeId = employeeId; }
+
+     */
 
     @Override
     public String toString() {
@@ -78,7 +81,7 @@ public class Booking {
                 ", hour=" + hour +
                 ", court=" + courtId +
                 ", client=" + clientId +
-                ", employee=" + employeeId +
+                //", employee=" + employeeId +
                 '}';
     }
 }
