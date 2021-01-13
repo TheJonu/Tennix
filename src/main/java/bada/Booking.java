@@ -7,6 +7,9 @@ public class Booking {
     private int hour;
     private int courtId;
     private int clientId;
+
+    private String courtName;
+
     //private Integer employeeId; // nullable
 
 
@@ -31,6 +34,22 @@ public class Booking {
         this.courtId = courtId;
         this.clientId = clientId;
     }
+
+    // get the day's name
+    public String getDayName(){
+        switch(day){
+            case 0: return "Monday";
+            case 1: return "Tuesday";
+            case 2: return "Wednesday";
+            case 3: return "Thursday";
+            case 4: return "Friday";
+            default: return "";
+        }
+    }
+
+
+    public String getCourtName() { return courtName; }
+    public void setCourtName(String value) { courtName = value; }
 
 
     public int getId() {

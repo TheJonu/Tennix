@@ -3,9 +3,10 @@ package bada;
 import java.sql.Timestamp;
 
 public class Person {
-    private String firstName;
-    private String lastName;
-    private Timestamp registrationDate;
+
+    protected String firstName;
+    protected String lastName;
+    protected Timestamp registrationDate;
 
     public Person(){
     }
@@ -16,10 +17,11 @@ public class Person {
         this.registrationDate = registrationDate;
     }
 
+
+
     public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -27,7 +29,6 @@ public class Person {
     public String getLastName() {
         return lastName;
     }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -35,7 +36,6 @@ public class Person {
     public Timestamp getRegistrationDate() {
         return registrationDate;
     }
-
     public void setRegistrationDate(Timestamp registrationDate) {
         this.registrationDate = registrationDate;
     }

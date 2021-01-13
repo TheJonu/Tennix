@@ -1,9 +1,14 @@
 package bada;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Client extends bada.Person {
+
     private int id;
+    private String login;
+
+
 
     public Client(){}
 
@@ -11,6 +16,16 @@ public class Client extends bada.Person {
         super(first_name, last_name, registration_date);
         this.id = id;
     }
+
+    public String getFullName() { return firstName + " " + lastName; }
+
+    public String getRegistrationDateString(){
+        Date date = new Date(registrationDate.getTime());
+        return date.toString();
+    }
+
+    public String getLogin() { return login; }
+    public void setLogin(String login) { this.login = login; }
 
     public int getId() {
         return id;

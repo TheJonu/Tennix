@@ -19,13 +19,15 @@ public class AppController {
     private CourtsDAO courtsDAO;
     @Autowired
     private BookingsDao bookingsDao;
+    @Autowired
+    private ClientsDao clientsDao;
 
     @RequestMapping("/")
     public String viewHomePage(Model model) {
-        //List<Court> courtList = courtsDAO.get();
-        //model.addAttribute("courtList", courtList);
         return "index";
     }
+
+    // COURTS
 
     @RequestMapping("/new_court")
     public String showNewCourtForm(Model model){
@@ -54,14 +56,13 @@ public class AppController {
         return "redirect:/court_list";
     }
 
-    @RequestMapping("delete_court/{id}")
+    @RequestMapping("/delete_court/{id}")
     public String deleteCourt(@PathVariable(name = "id") int id){
         courtsDAO.delete(id);
         return "redirect:/court_list";
     }
 
-    // show a court's timetable
-    @RequestMapping("timetable/{id}")
+    @RequestMapping("/timetable/{id}")
     public ModelAndView showTimetable(@PathVariable(name = "id") int id){
         ModelAndView mav = new ModelAndView("timetable");
         Court court = courtsDAO.get(id);
@@ -71,20 +72,59 @@ public class AppController {
         return mav;
     }
 
-    // create a booking
-    @RequestMapping("/save_booking")
-    public String saveBooking(@PathParam("day") int day, @PathParam("hour") int hour){
-        //System.out.println(courtId);
+    @RequestMapping("/timetable/{id}/save_booking")
+    public String saveBooking(@PathVariable int id, @PathParam("day") int day, @PathParam("hour") int hour){
+        System.out.println(id);
         Booking booking = new Booking(day, hour, 23, 1); // temporary client ID
         bookingsDao.save(booking);
         return "redirect:/timetable/" + booking.getCourtId();
     }
 
-    // show court list
     @RequestMapping("/court_list")
-    public String showCourtList(Model model) {
+    public String showCourtsList(Model model) {
         List<Court> courtList = courtsDAO.get();
         model.addAttribute("courtList", courtList);
         return "court_list";
+    }
+
+    // CLIENTS
+
+    @RequestMapping("/client_list")
+    public String showClientsList(Model model) {
+        List<Client> clients = clientsDao.get();
+        model.addAttribute("clients", clients);
+        return "client_list";
+    }
+
+    @RequestMapping("/client_register")
+    public String showRegisterForm(Model model){
+        Client client = new Client();
+        model.addAttribute("client", client);
+        return "client_register";
+    }
+
+    @RequestMapping("/client_save")
+    public String saveClient(@ModelAttribute("client") Client client){
+        clientsDao.save(client);
+        return "redirect:/client_list";
+    }
+
+    @RequestMapping("/client/{id}/edit")
+    public ModelAndView showClientEditForm(@PathVariable(name="id") int id){
+        ModelAndView mav = new ModelAndView("client_edit");
+        Court court = courtsDAO.get(id);
+        mav.addObject("court", court);
+        return mav;
+    }
+
+    @RequestMapping("/client/{id}")
+    public ModelAndView showBookingsList(@PathVariable(name = "id") int id){
+        ModelAndView mav = new ModelAndView("client");
+        Client client = clientsDao.get(id);
+        List<Booking> bookings = bookingsDao.getByClient(id);
+        bookings.forEach(b -> b.setCourtName(courtsDAO.get(b.getCourtId()).getName()));
+        mav.addObject("client", client);
+        mav.addObject("bookings", bookings);
+        return mav;
     }
 }
