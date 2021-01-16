@@ -1,6 +1,6 @@
 package bada.model;
 
-public class Employee extends User {
+public class Employee extends Person {
 
     /*
     private int employeeId;

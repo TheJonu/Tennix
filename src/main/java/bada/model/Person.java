@@ -2,17 +2,17 @@ package bada.model;
 
 import java.sql.Date;
 
-public class User {
+public class Person {
 
     protected String login;
     protected String password;
     protected Date regDate;
 
-    public User(){
+    public Person(){
         this.regDate = new Date(System.currentTimeMillis());
     }
 
-    public User(String login, String password){
+    public Person(String login, String password){
         this.login = login;
         this.password = password;
         this.regDate = new Date(System.currentTimeMillis());

@@ -1,8 +1,6 @@
 package bada.model;
 
-import java.sql.Date;
-
-public class Client extends User {
+public class Client extends Person {
 
     protected int id;
     protected String name;
