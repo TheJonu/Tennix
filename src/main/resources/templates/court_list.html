@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Court List</title>
+ 
+	
 </head>
 <body>
 <div align="center">
@@ -21,6 +23,7 @@
             <th>ID</th>
             <th>NAME</th>
             <th>ACTIONS</th>
+            <th>IMAGE</th>
         </tr>
         </thead>
         <tbody>
@@ -35,6 +38,8 @@
                 &nbsp;|&nbsp;
                 <a th:href="@{/court/{id}/delete(id=${court.id})}">Delete</a>
             </td>
+            <td><img src="${court.image}" alt="Zdjęcie niedostępne" height=300 width=400></img></td>
+            
 
         </tr>
         </tbody>

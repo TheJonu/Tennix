@@ -7,6 +7,7 @@ public class Court {
     private int id;
     private String name;
     private String address;
+    private String image;
     private int openingHour;
     private int closingHour;
 
@@ -17,10 +18,20 @@ public class Court {
 
     }
 
+    public Court(int id, String name, String address, String image, int openingHour, int closingHour){
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.image = image;
+        this.openingHour = openingHour;
+        this.closingHour = closingHour;
+    }
+    
     public Court(int id, String name, String address, int openingHour, int closingHour){
         this.id = id;
         this.name = name;
         this.address = address;
+        this.image = id+".jpg";
         this.openingHour = openingHour;
         this.closingHour = closingHour;
     }
@@ -65,6 +76,14 @@ public class Court {
     public void setAddress(String address) {
         this.address = address;
     }
+    
+    public void setImage(String image) {
+    	this.image = image;
+    }
+    
+    public String getImage() {
+    	return image;
+    }
 
     public int getOpeningHour() {
         return openingHour;
@@ -92,6 +111,7 @@ public class Court {
                 "ID=" + id +
                 ", name='" + name +
                 ", address='" + address +
+                ", image='" + image +
                 ", opening_hour=" + openingHour +
                 ", closing_hour=" + closingHour +
                 ']';
