@@ -7,7 +7,7 @@ public class Court {
     private int id;
     private String name;
     private String address;
-    private String image;
+    //private String image;
     private int openingHour;
     private int closingHour;
 
@@ -18,20 +18,22 @@ public class Court {
 
     }
 
+    /*
     public Court(int id, String name, String address, String image, int openingHour, int closingHour){
         this.id = id;
         this.name = name;
         this.address = address;
-        this.image = image;
+        //this.image = image;
         this.openingHour = openingHour;
         this.closingHour = closingHour;
     }
+    */
     
     public Court(int id, String name, String address, int openingHour, int closingHour){
         this.id = id;
         this.name = name;
         this.address = address;
-        this.image = id+".jpg";
+        //this.image = id+".jpg";
         this.openingHour = openingHour;
         this.closingHour = closingHour;
     }
@@ -50,6 +52,11 @@ public class Court {
     // get opening hours string
     public String getOpeningHours(){
         return "" + openingHour + ":00 - " + closingHour + ":00";
+    }
+
+    // get path to image
+    public String getImageSrc() {
+        return "court_" + getId() + ".jpg";
     }
 
 
@@ -77,13 +84,9 @@ public class Court {
         this.address = address;
     }
     
-    public void setImage(String image) {
-    	this.image = image;
-    }
-    
-    public String getImage() {
-    	return image;
-    }
+    //public void setImage(String image) {
+    	//this.image = image;
+    //}
 
     public int getOpeningHour() {
         return openingHour;
@@ -111,7 +114,7 @@ public class Court {
                 "ID=" + id +
                 ", name='" + name +
                 ", address='" + address +
-                ", image='" + image +
+                //", image='" + image +
                 ", opening_hour=" + openingHour +
                 ", closing_hour=" + closingHour +
                 ']';

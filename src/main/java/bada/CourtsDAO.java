@@ -36,14 +36,14 @@ public class CourtsDAO {
     // add new court
     public void save(Court court) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
-        insertActor.withTableName("courts").usingColumns("name", "address", "image", "opening_hour", "closing_hour");
+        insertActor.withTableName("courts").usingColumns("name", "address", "opening_hour", "closing_hour");
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(court);
         insertActor.execute(param);
     }
 
     // modify existing court
     public void update(Court court) {
-        String sql = "UPDATE Courts SET name=:name, address=:address, image=:image, opening_hour=:openingHour, closing_hour=:closingHour WHERE id=:id";
+        String sql = "UPDATE Courts SET name=:name, address=:address, opening_hour=:openingHour, closing_hour=:closingHour WHERE id=:id";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(court);
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
         template.update(sql, param);
