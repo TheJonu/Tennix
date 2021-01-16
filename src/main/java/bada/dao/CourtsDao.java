@@ -1,5 +1,6 @@
-package bada;
+package bada.dao;
 
+import bada.model.Court;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -10,11 +11,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class CourtsDAO {
+public class CourtsDao {
 
     private JdbcTemplate jdbcTemplate;
 
-    public CourtsDAO(JdbcTemplate jdbcTemplate) {
+    public CourtsDao(JdbcTemplate jdbcTemplate) {
         super();
         this.jdbcTemplate = jdbcTemplate;
     }

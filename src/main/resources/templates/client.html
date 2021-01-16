@@ -9,15 +9,16 @@
 <div align="center">
     <h1>Client</h1>
     <p>
-        <a href="/">main page</a>
+        <a href="/client_list">client list</a>
         <br/>
     </p>
     <p>
-        <a th:text="${client.getFullName()}">full name</a>
+        Name: <a th:text="${client.name}">Name</a>
+        <br/>
+        Login: <a th:text="${client.login}">Name</a>
         <br/>
     </p>
-    <br/>
-    <h3>My bookings</h3>
+    <h3>Bookings</h3>
     <table border="1" cellpadding="10">
         <thead>
         <tr>

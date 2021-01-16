@@ -38,7 +38,7 @@
                 &nbsp;|&nbsp;
                 <a th:href="@{/court/{id}/delete(id=${court.id})}">Delete</a>
             </td>
-            <td><img th:src="${court.getImageSrc()}" alt="Zdjęcie niedostępne" height=90 width=160></td>
+            <td><img th:src="@{/images/{src}(src=${court.getImageSrc()})}" alt="Zdjęcie niedostępne" height=90 width=160></td>
             
 
         </tr>

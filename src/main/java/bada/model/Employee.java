@@ -1,8 +1,8 @@
-package bada;
+package bada.model;
 
-import java.sql.Timestamp;
+public class Employee extends User {
 
-public class Employee extends bada.Person {
+    /*
     private int employeeId;
     private float salary;
 
@@ -32,7 +32,7 @@ public class Employee extends bada.Person {
 
     @Override
     public String toString() {
-        return "bada.Employee [" +
+        return "bada.model.Employee [" +
                 "client_id=" + employeeId +
                 "first_name=" + this.getFirstName() +
                 "last_name=" + this.getLastName() +
@@ -40,4 +40,6 @@ public class Employee extends bada.Person {
                 "salary=" + salary +
                 ']';
     }
+
+     */
 }

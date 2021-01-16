@@ -3,18 +3,24 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Court Timetable</title>
+    <title>Court</title>
 </head>
 <body>
 <div align="center">
-    <h1>Timetable</h1>
+    <h1>Court</h1>
     <p>
         <a href="/court_list">court list</a>
         <br/>
     </p>
     <p>
-        <a th:text="${court.name}">Court Name</a>
+        Name: <a th:text="${court.name}">Court Name</a>
+        </br>
+        Address: <a th:text="${court.address}">Court Name</a>
+        </br>
+        Open: <a th:text="${court.getOpeningHours()}">0:00 - 0:00</a>
+        </br>
     </p>
+    <h3>Timetable</h3>
     <table border="1" cellpadding="10">
         <thead>
         <tr>

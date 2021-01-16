@@ -12,7 +12,28 @@
         <a href="/client_list">client list</a>
         <br/>
     </p>
-
+    <form action="#"
+          th:action="@{/client_save}"
+          th:object="${client}"
+          method="post">
+        <table border="1" cellpadding="10">
+            <tr>
+                <td>Login</td>
+                <td><input type="text" th:field="*{login}"></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" th:field="*{password}"></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" th:field="*{name}"></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2"><button type="submit">Add</button></td>
+            </tr>
+        </table>
+    </form>
 </div>
 </body>
 </html>

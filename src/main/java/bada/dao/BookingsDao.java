@@ -1,5 +1,6 @@
-package bada;
+package bada.dao;
 
+import bada.model.Booking;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;

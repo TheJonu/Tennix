@@ -1,43 +1,28 @@
-package bada;
+package bada.model;
 
 
 import java.util.List;
 
 public class Court {
+
     private int id;
     private String name;
     private String address;
-    //private String image;
     private int openingHour;
     private int closingHour;
 
     private Booking[][] timetable;
 
-
     public Court(){
 
     }
 
-    /*
-    public Court(int id, String name, String address, String image, int openingHour, int closingHour){
-        this.id = id;
+    public Court(String name, String address, int openingHour, int closingHour){
         this.name = name;
         this.address = address;
-        //this.image = image;
         this.openingHour = openingHour;
         this.closingHour = closingHour;
     }
-    */
-    
-    public Court(int id, String name, String address, int openingHour, int closingHour){
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        //this.image = id+".jpg";
-        this.openingHour = openingHour;
-        this.closingHour = closingHour;
-    }
-
 
     // set the timetable according to existing bookings
     public void refreshTimetable(List<Booking> bookings){
@@ -59,58 +44,28 @@ public class Court {
         return "court_" + getId() + ".jpg";
     }
 
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    public int getId() {
-        return id;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
 
-    public String getName() {
-        return name;
-    }
+    public int getOpeningHour() { return openingHour; }
+    public void setOpeningHour(int openingHour) { this.openingHour = openingHour; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-    
-    //public void setImage(String image) {
-    	//this.image = image;
-    //}
-
-    public int getOpeningHour() {
-        return openingHour;
-    }
-
-    public void setOpeningHour(int openingHour) {
-        this.openingHour = openingHour;
-    }
-
-    public int getClosingHour() {
-        return closingHour;
-    }
-
-    public void setClosingHour(int closingHour) {
-        this.closingHour = closingHour;
-    }
+    public int getClosingHour() { return closingHour; }
+    public void setClosingHour(int closingHour) { this.closingHour = closingHour; }
 
     public Booking[][] getTimetable() { return timetable; }
-
     public void setTimetable(Booking[][] bookings) { this.timetable = bookings; }
 
+    /*
     @Override
     public String toString() {
-        return "bada.Court [" +
+        return "bada.model.Court [" +
                 "ID=" + id +
                 ", name='" + name +
                 ", address='" + address +
@@ -119,5 +74,6 @@ public class Court {
                 ", closing_hour=" + closingHour +
                 ']';
     }
+    */
 }
 
