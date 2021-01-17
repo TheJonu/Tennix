@@ -20,21 +20,18 @@ public class CourtsDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    // get court list
     public List<Court> get(){
         String sql = "SELECT * FROM Courts";
         List<Court> courts = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Court.class));
         return courts;
     }
 
-    // get court by id
     public Court get(int id) {
         String sql = "SELECT * FROM Courts WHERE Id = " + id;
         Court court = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Court.class));
         return court;
     }
 
-    // add new court
     public void save(Court court) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
         insertActor.withTableName("courts").usingColumns("name", "address", "opening_hour", "closing_hour");
@@ -42,7 +39,6 @@ public class CourtsDao {
         insertActor.execute(param);
     }
 
-    // modify existing court
     public void update(Court court) {
         String sql = "UPDATE Courts SET name=:name, address=:address, opening_hour=:openingHour, closing_hour=:closingHour WHERE id=:id";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(court);
@@ -50,7 +46,6 @@ public class CourtsDao {
         template.update(sql, param);
     }
 
-    // delete a court
     public void delete(int id) {
         String sql = "DELETE FROM Courts WHERE id = ?";
         jdbcTemplate.update(sql, id);

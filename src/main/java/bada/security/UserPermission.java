@@ -1,6 +1,7 @@
 package bada.security;
 
 public enum UserPermission {
+    /*
     POCZTY_READ("poczty:read"),
     POCZTY_WRITE("poczty:write"),
     HIDDEN_READ("hidden:read"),
@@ -15,4 +16,5 @@ public enum UserPermission {
     public String getPermission() {
         return permission;
     }
+     */
 }

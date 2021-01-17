@@ -8,10 +8,14 @@ import java.util.stream.Collectors;
 import static bada.security.UserPermission.*;
 
 public enum UserRole {
-    ADMIN(Sets.newHashSet(POCZTY_READ, POCZTY_WRITE, HIDDEN_READ, HIDDEN_WRITE)),
-    EMPLOYEE(Sets.newHashSet(POCZTY_READ, HIDDEN_READ)),
-    CLIENT(Sets.newHashSet());
+    //ADMIN(Sets.newHashSet(POCZTY_READ, POCZTY_WRITE, HIDDEN_READ, HIDDEN_WRITE)),
+    //EMPLOYEE(Sets.newHashSet(POCZTY_READ, HIDDEN_READ)),
+    //CLIENT(Sets.newHashSet());
+    ADMIN,
+    EMPLOYEE,
+    CLIENT;
 
+    /*
     private final Set<UserPermission> permissions;
 
     UserRole(Set<UserPermission> permissions) {
@@ -30,4 +34,5 @@ public enum UserRole {
 
         return permissions;
     }
+    */
 }

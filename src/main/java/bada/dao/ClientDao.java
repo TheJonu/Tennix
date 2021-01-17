@@ -11,12 +11,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class ClientsDao {
+public class ClientDao {
 
     private JdbcTemplate jdbcTemplate;
 
 
-    public ClientsDao(JdbcTemplate jdbcTemplate) {
+    public ClientDao(JdbcTemplate jdbcTemplate) {
         super();
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -28,7 +28,7 @@ public class ClientsDao {
         return clients;
     }
 
-    public Client get(int id) {
+    public Client getById(int id) {
         String sql = "SELECT * FROM Clients WHERE Id = " + id;
         Client client = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Client.class));
         return client;

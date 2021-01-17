@@ -19,21 +19,18 @@ public class BookingsDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    // get a court's bookings
     public List<Booking> getByCourt(int id){
         String sql = "SELECT * FROM Bookings WHERE Court_id = " + id;
         List<Booking> bookings = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Booking.class));
         return bookings;
     }
 
-    // get a client's bookings
     public List<Booking> getByClient(int id){
         String sql = "SELECT * FROM Bookings WHERE Client_id = " + id;
         List<Booking> bookings = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Booking.class));
         return bookings;
     }
 
-    // add a new booking
     public void save(Booking booking) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
         insertActor.withTableName("bookings").usingColumns("day", "hour", "court_id", "client_id");

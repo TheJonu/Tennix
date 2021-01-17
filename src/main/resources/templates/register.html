@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>Register</title>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
@@ -17,6 +18,10 @@
         <div>
             <label for="password">Password</label>
             <input type="password" id="password" th:field="*{password}" required>
+        </div>
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+            <label for="role">Role</label>
+            <input type="text" id="role" th:field="*{role}">
         </div>
         <button type="submit">Register</button>
     </form>

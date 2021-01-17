@@ -1,11 +1,15 @@
-package bada.security;
+package bada.model;
 
+import bada.security.UserRole;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -14,6 +18,10 @@ import java.util.Collection;
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
+
+    public enum Role{
+        ADMIN, EMPLOYEE, CLIENT;
+    }
 
     @Id
     @SequenceGenerator(name = "user_gen", sequenceName = "user_sequence", allocationSize = 1)
@@ -42,35 +50,38 @@ public class User implements UserDetails {
         this.password = password;
     }
 
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Set<SimpleGrantedAuthority> set = new HashSet();
+        set.add(new SimpleGrantedAuthority("ROLE_" + role));
+        return set;
+    }
+
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
-
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
-
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return UserRole.valueOf(role).getGrantedAuthorities();
-    }
-
     @Override
     public boolean isEnabled() {
         return isEnabled;
     }
+
 
     @Override
     public String getUsername() { return username; }
     @Override
     public String getPassword() { return password; }
 
+    public Integer getId() { return id; }
     public void setPassword(String value) {password = value;}
 }
