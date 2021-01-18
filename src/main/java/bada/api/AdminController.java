@@ -33,20 +33,20 @@ public class AdminController {
 
     @GetMapping
     public String showAdminView(){
-        return "/admin";
+        return "admin";
     }
 
     @GetMapping("/users")
     public String showUsers(Model model) {
         Iterable<User> users = userService.getAll();
         model.addAttribute("users", users);
-        return "/users_list";
+        return "users_list";
     }
 
     @GetMapping("/users/{id}")
     public String showUser(Model model, @PathVariable("id") int id) {
         User user = userService.getById(id);
         model.addAttribute("user", user);
-        return "/user";
+        return "user";
     }
 }

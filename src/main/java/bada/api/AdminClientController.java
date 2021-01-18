@@ -28,14 +28,14 @@ public class AdminClientController {
     public String showClientsList(Model model) {
         List<Client> clients = clientDao.get();
         model.addAttribute("clients", clients);
-        return "/client_list";
+        return "client_list";
     }
 
     @RequestMapping("/client_new")
     public String showNewClientForm(Model model){
         Client client = new Client();
         model.addAttribute("client", client);
-        return "/client_new";
+        return "client_new";
     }
 
     @PostMapping("/client_save")

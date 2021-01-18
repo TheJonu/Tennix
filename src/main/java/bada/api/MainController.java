@@ -18,12 +18,12 @@ public class MainController {
 
     @GetMapping("/")
     public String showIndex(Model model) {
-        return "/index";
+        return "index";
     }
 
     @GetMapping("/login")
     public String showLogin() {
-        return "/login";
+        return "login";
     }
 
     @GetMapping("/register")

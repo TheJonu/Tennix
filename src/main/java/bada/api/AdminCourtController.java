@@ -29,7 +29,7 @@ public class AdminCourtController {
     public String showNewCourtForm(Model model){
         Court court = new Court();
         model.addAttribute("court", court);
-        return "/court_new";
+        return "court_new";
     }
 
     @RequestMapping("/court_save")
