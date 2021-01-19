@@ -4,7 +4,7 @@ import bada.dao.BookingsDao;
 import bada.dao.CourtsDao;
 import bada.model.Booking;
 import bada.model.User;
-import bada.service.UserService;
+import bada.dao.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -31,7 +31,7 @@ public class ClientController {
     public ModelAndView showClientView(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.getByUsername(authentication.getName());
-        ModelAndView mav = new ModelAndView("/client");
+        ModelAndView mav = new ModelAndView("client");
         List<Booking> bookings = bookingsDao.getByClient(user.getId());
         bookings.forEach(b -> b.setCourtName(courtsDAO.get(b.getCourtId()).getName()));
         mav.addObject("client", user);

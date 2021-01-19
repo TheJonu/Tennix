@@ -1,4 +1,4 @@
-package bada.service;
+package bada.dao;
 
 import bada.dao.UserRepository;
 import bada.model.User;
@@ -42,8 +42,17 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
-    public void registerUser(User user) {
+    public void register(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
+    }
+
+    public void delete(User user){
+        userRepository.delete(user);
+    }
+
+    public void delete(int id){
+        User user = getById(id);
+        delete(user);
     }
 }

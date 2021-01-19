@@ -1,7 +1,7 @@
 package bada.api;
 
 import bada.model.User;
-import bada.service.UserService;
+import bada.dao.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,8 +34,7 @@ public class MainController {
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute("user") User user) {
-        //model.addAttribute("user", user);
-        userService.registerUser(user);
+        userService.register(user);
         return "redirect:/?registered=true";
     }
 

@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Users List</title>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
     <link rel="stylesheet" th:href="@{/css/tennisex.css}"/>
 </head>
+
 <body>
+
+<!-- HEADER -->
+<div th:replace="header :: header"></div>
 
 <div class="hero-image">
 	<div class="hero-text">
-		<h2>Tennisex Tennis Club</h2>
+		<h1>Tennix Tennis Club</h1>
 	</div>
 </div>
 
 <div align="center">
-    <h1>Users List</h1>
+    <h1>User List</h1>
     <br/>
     <table border="1" cellpadding="10">
         <thead>
@@ -23,6 +29,10 @@
             <th>ID</th>
             <th>USERNAME</th>
             <th>ROLE</th>
+            <th>FULL NAME</th>
+            <th>EMAIL</th>
+            <th>REG DATE</th>
+            <th>ACTIONS</th>
         </tr>
         </thead>
         <tbody>
@@ -31,6 +41,12 @@
             <td th:text="${user.id}">Id</td>
             <td th:text="${user.username}">Username</td>
             <td th:text="${user.role}">Role</td>
+            <td th:text="${user.name}">Name</td>
+            <td th:text="${user.email}">Email</td>
+            <td th:text="${user.regDate}">Reg Date</td>
+            <td>
+                <a th:href="@{/admin/delete_user/{id}(id=${user.id})}">DELETE</a>
+            </td>
         </tr>
         </tbody>
     </table>

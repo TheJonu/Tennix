@@ -10,19 +10,23 @@ public class Court {
     private String address;
     private int openingHour;
     private int closingHour;
+    private String photo;
 
     private Booking[][] timetable;
+
 
     public Court(){
 
     }
 
-    public Court(String name, String address, int openingHour, int closingHour){
+    public Court(String name, String address, int openingHour, int closingHour, String photo){
         this.name = name;
         this.address = address;
         this.openingHour = openingHour;
         this.closingHour = closingHour;
+        this.photo = photo;
     }
+
 
     // set the timetable according to existing bookings
     public void refreshTimetable(List<Booking> bookings){
@@ -35,14 +39,11 @@ public class Court {
     }
 
     // get opening hours string
-    public String getOpeningHours(){
-        return "" + openingHour + ":00 - " + closingHour + ":00";
-    }
+    public String getOpeningHours(){ return "" + openingHour + ":00 - " + closingHour + ":00"; }
 
     // get path to image
-    public String getImageSrc() {
-        return "court_" + getId() + ".jpg";
-    }
+    public String getImageSrc() { return photo; }
+
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
@@ -59,21 +60,11 @@ public class Court {
     public int getClosingHour() { return closingHour; }
     public void setClosingHour(int closingHour) { this.closingHour = closingHour; }
 
+    public String getPhoto() { return photo; }
+    public void setPhoto(String photo) { this.photo = photo; }
+
     public Booking[][] getTimetable() { return timetable; }
     public void setTimetable(Booking[][] bookings) { this.timetable = bookings; }
 
-    /*
-    @Override
-    public String toString() {
-        return "bada.model.Court [" +
-                "ID=" + id +
-                ", name='" + name +
-                ", address='" + address +
-                //", image='" + image +
-                ", opening_hour=" + openingHour +
-                ", closing_hour=" + closingHour +
-                ']';
-    }
-    */
 }
 

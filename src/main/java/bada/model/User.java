@@ -1,6 +1,5 @@
 package bada.model;
 
-import bada.security.UserRole;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -8,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,7 +20,7 @@ import java.util.Set;
 public class User implements UserDetails {
 
     public enum Role{
-        ADMIN, EMPLOYEE, CLIENT;
+        ADMIN, CLIENT;
     }
 
     @Id
@@ -29,17 +29,24 @@ public class User implements UserDetails {
     @Column(name = "id", unique = true)
     private Integer id;
 
-    @Column(name = "login", nullable = false, unique = true)
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
     @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "role")
-    private String role = UserRole.CLIENT.name();
+    private String role = Role.CLIENT.name();
 
-    @Column(name = "enabled")
-    private boolean isEnabled = true;
+    @Column(name = "reg_date")
+    private Date regDate = new Date(System.currentTimeMillis());
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "email")
+    private String email;
+
 
     public User(){
 
@@ -60,6 +67,15 @@ public class User implements UserDetails {
 
 
     @Override
+    public String getUsername() { return username; }
+    @Override
+    public String getPassword() { return password; }
+
+    public Integer getId() { return id; }
+    public void setPassword(String value) {password = value;}
+
+
+    @Override
     public boolean isAccountNonExpired() {
         return true;
     }
@@ -73,15 +89,7 @@ public class User implements UserDetails {
     }
     @Override
     public boolean isEnabled() {
-        return isEnabled;
+        return true;
     }
 
-
-    @Override
-    public String getUsername() { return username; }
-    @Override
-    public String getPassword() { return password; }
-
-    public Integer getId() { return id; }
-    public void setPassword(String value) {password = value;}
 }

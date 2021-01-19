@@ -1,6 +1,6 @@
 package bada;
 
-import bada.service.UserService;
+import bada.dao.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
@@ -40,8 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/css/*", "/img/*", "/js/*", "/menu").permitAll()
-                .antMatchers("/register", "/court_list").permitAll()
+                .antMatchers("/css/*", "/img/*", "/js/*", "/images/*").permitAll()
+                .antMatchers("/", "/register", "/court/list").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -51,5 +52,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutSuccessUrl("/");
+    }
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .inMemoryAuthentication()
+                .withUser("admin").password(passwordEncoder.encode("admin")).roles("ADMIN")
+                .and()
+                .withUser("client").password(passwordEncoder.encode("client")).roles("CLIENT");
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(10);
     }
 }

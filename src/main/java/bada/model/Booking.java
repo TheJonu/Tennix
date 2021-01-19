@@ -6,7 +6,7 @@ public class Booking {
     private int day;
     private int hour;
     private int courtId;
-    private int clientId;
+    private int userId;
 
     private String courtName;
 
@@ -14,11 +14,11 @@ public class Booking {
 
     }
 
-    public Booking(int day, int hour, int courtId, int clientId){
+    public Booking(int day, int hour, int courtId, int userId){
         this.day = day;
         this.hour = hour;
         this.courtId = courtId;
-        this.clientId = clientId;
+        this.userId = userId;
     }
 
     // get the day's name
@@ -58,21 +58,9 @@ public class Booking {
         this.courtId = courtId;
     }
 
-    public int getClientId() {
-        return clientId;
+    public int getUserId() {
+        return userId;
     }
-    public void setClientId(int clientId) { this.clientId = clientId; }
+    public void setUserId(int userId) { this.userId = userId; }
 
-    /*
-    @Override
-    public String toString() {
-        return "Booking{" +
-                "id=" + id +
-                ", hour=" + hour +
-                ", court=" + courtId +
-                ", client=" + clientId +
-                //", employee=" + employeeId +
-                '}';
-    }
-     */
 }

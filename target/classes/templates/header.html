@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>Header</title>
     <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
+    <link rel="stylesheet" th:href="@{/css/tennisex.css}"/>
 </head>
 <body>
 
@@ -15,40 +16,38 @@
     <div th:fragment="header">
 
         <!-- left panel -->
-        <div align="left">
-            <div>
-                <a th:href="@{/court/list}">Courts</a>
-            </div>
-            <div sec:authorize="hasRole('ROLE_CLIENT')">
-                <a th:href="@{/client}">Client</a>
-            </div>
-            <div sec:authorize="hasRole('ROLE_ADMIN')">
-                <a th:href="@{/admin}">Admin</a>
-            </div>
-        </div>
+        <a th:href="@{/court/list}">
+            <button type="button">COURTS</button>
+        </a>
+        <a sec:authorize="hasRole('ROLE_CLIENT')" th:href="@{/client}">
+            <button type="button">Client</button>
+        </a>
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">
+            <button>ADMIN</button>
+        </a>
 
         <!-- central panel -->
-        <div align="center">
-            <div id="logo">
-                <a href="/">
-                    <img th:src="@{/hero1.png}" height=10%/>
-                </a>
-            </div>
-        </div>
+        <a href="/">
+            <img src="images/hero1.png" alt="LOGO" height="10%">
+        </a>
 
         <!-- right panel -->
-        <div align="right">
-            <!-- when not logged in -->
-            <div sec:authorize="isAnonymous()">
-                <a th:href="@{/login}">Log in</a>
-                <a th:href="@{/register}">Register</a>
-            </div>
-            <!-- when logged in -->
-            <div sec:authorize="isAuthenticated()">
-                Logged in as <span sec:authentication="name">Name</span>
-                <a th:href="@{/logout}">Logout</a>
-            </div>
-        </div>
+        <!-- when not logged in -->
+        <a sec:authorize="isAnonymous()">
+            <a th:href="@{/login}">
+                <button type="button">LOG IN</button>
+            </a>
+            <a th:href="@{/register}">
+                <button type="button">REGISTER</button>
+            </a>
+        </a>
+        <!-- when logged in -->
+        <a sec:authorize="isAuthenticated()">
+            <a sec:authentication="name">Username</a>
+            <a th:href="@{/logout}">
+                <button type="button">LOG OUT</button>
+            </a>
+        </a>
     </div>
 </div>
 </body>

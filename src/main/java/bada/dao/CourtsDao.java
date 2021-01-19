@@ -34,13 +34,13 @@ public class CourtsDao {
 
     public void save(Court court) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
-        insertActor.withTableName("courts").usingColumns("name", "address", "opening_hour", "closing_hour");
+        insertActor.withTableName("courts").usingColumns("name", "address", "opening_hour", "closing_hour", "photo");
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(court);
         insertActor.execute(param);
     }
 
     public void update(Court court) {
-        String sql = "UPDATE Courts SET name=:name, address=:address, opening_hour=:openingHour, closing_hour=:closingHour WHERE id=:id";
+        String sql = "UPDATE Courts SET name=:name, address=:address, opening_hour=:openingHour, closing_hour=:closingHour, photo=:photo WHERE id=:id";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(court);
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
         template.update(sql, param);

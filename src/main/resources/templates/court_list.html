@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
     <title>Court List</title>
- 
-	
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
+    <link rel="stylesheet" th:href="@{/css/tennisex.css}"/>
 </head>
+
 <body>
+
+<!-- HEADER -->
+<div th:replace="header :: header"></div>
+
 <div align="center">
+
     <h1>Court List</h1>
-    <p>
-        <a href="/">main page</a>
-        <br/>
-        <a href="/court_new">new court</a>
-        <br/>
-    </p>
+
     <br/>
     <table border="1" cellpadding="10">
         <thead>
         <tr>
             <th>ID</th>
             <th>NAME</th>
-            <th>ACTIONS</th>
+            <th>ADDRESS</th>
+            <th>OPEN</th>
+            <th sec:authorize="isAuthenticated()">ACTIONS</th>
             <th>IMAGE</th>
         </tr>
         </thead>
         <tbody>
 
         <tr th:each="court : ${courtList}">
-            <td align="center" th:text="${court.id}">ID</td>
+            <td th:text="${court.id}">ID</td>
             <td th:text="${court.name}">Name</td>
-            <td>
-                <a th:href="@{/court/{id}(id=${court.id})}">Info</a>
-                &nbsp;|&nbsp;
-                <a th:href="@{/court/{id}/edit(id=${court.id})}">Edit</a>
-                &nbsp;|&nbsp;
-                <a th:href="@{/court/{id}/delete(id=${court.id})}">Delete</a>
+            <td th:text="${court.address}">Address</td>
+            <td th:text="${court.getOpeningHours()}">Open</td>
+            <td sec:authorize="isAuthenticated()">
+                <a th:href="@{/court/{id}(id=${court.id})}">MORE</a>
+                <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/edit_court/{id}(id=${court.id})}">EDIT</a>
+                <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/delete_court/{id}(id=${court.id})}">DELETE</a>
             </td>
-            <td><img th:src="@{/images/{src}(src=${court.getImageSrc()})}" alt="Zdjęcie niedostępne" height=90 width=160></td>
+            <td><img th:src="@{/images/{src}(src=${court.getImageSrc()})}" alt="no photo" height=90 width=160></td>
             
 
         </tr>

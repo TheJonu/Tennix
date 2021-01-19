@@ -1,25 +1,36 @@
-<!-- localhost:8080 -->
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Admin Panel</title>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
+    <link rel="stylesheet" th:href="@{/css/tennisex.css}"/>
 </head>
+
 <body>
 
 <!-- HEADER -->
 <div th:replace="header :: header"></div>
 
 <div align="center">
+
     <h1>Admin Panel</h1>
-    <p>
-        <a href="/admin/users">users list</a>
-        <br/>
-        <a href="/register">register a user</a>
-        <br/>
-    </p>
+
+    <div>
+        <a href="/admin/users">USER LIST</a>
+    </div>
+
+    <div>
+        <a href="/register">REGISTER USER</a>
+    </div>
+
+    <div>
+        <a href="/admin/new_court">NEW COURT</a>
+    </div>
+
 </div>
+
 </body>
 </html>

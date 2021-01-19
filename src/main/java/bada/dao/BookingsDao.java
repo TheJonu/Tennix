@@ -26,14 +26,14 @@ public class BookingsDao {
     }
 
     public List<Booking> getByClient(int id){
-        String sql = "SELECT * FROM Bookings WHERE Client_id = " + id;
+        String sql = "SELECT * FROM Bookings WHERE User_id = " + id;
         List<Booking> bookings = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Booking.class));
         return bookings;
     }
 
     public void save(Booking booking) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
-        insertActor.withTableName("bookings").usingColumns("day", "hour", "court_id", "client_id");
+        insertActor.withTableName("bookings").usingColumns("day", "hour", "court_id", "user_id");
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(booking);
         insertActor.execute(param);
     }

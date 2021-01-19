@@ -1,10 +1,10 @@
 package bada.api;
 
 import bada.dao.BookingsDao;
-import bada.dao.ClientDao;
 import bada.dao.CourtsDao;
 import bada.model.Booking;
 import bada.model.Court;
+import bada.dao.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +18,8 @@ import java.util.List;
 @RequestMapping("/court")
 public class CourtController {
 
+    @Autowired
+    private UserService userService;
     @Autowired
     private CourtsDao courtsDAO;
     @Autowired
@@ -41,13 +43,14 @@ public class CourtController {
         return mav;
     }
 
-    @PostMapping("/{id}")
-    public String saveBooking(@PathVariable int id, @PathParam("day") int day, @PathParam("hour") int hour){
+    @RequestMapping("/{id}/book")
+    public String book(@PathVariable int id, @PathParam("client") String client, @PathParam("day") int day, @PathParam("hour") int hour){
+        int userId = userService.getByUsername(client).getId();
         System.out.println(id);
-        Booking booking = new Booking(day, hour, 23, 1); // temporary client ID
+        System.out.println(client);
+        System.out.println(userId);
+        Booking booking = new Booking(day, hour, id, userId);
         bookingsDao.save(booking);
         return "redirect:/court/" + booking.getCourtId();
     }
-
-
 }

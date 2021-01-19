@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Tennis Manager</title>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
     <link rel="stylesheet" th:href="@{/css/tennisex.css}"/>
 </head>
 <body>
@@ -13,20 +14,18 @@
 <!-- HEADER -->
 <div th:replace="header :: header"></div>
 
+<div class="hero-image">
+    <div class="hero-text">
+        <h1>Tennix Tennis Club</h1>
+    </div>
+</div>
+
 <div align="center">
-    <h1>Tennis Manager</h1>
-    <p>
-        <a href="/login">login</a>
-        <br/>
-        <a href="/logout">logout</a>
-        <br/>
-        <a href="/register">register</a>
-        <br/>
-        <a href="/court/list">court list</a>
-        <br/>
-        <a href="/client_list">client list</a>
-        <br/>
-    </p>
+
+    WELCOME TO
+    <h1>TENNIX</h1>
+    - the best tennis club in town -
+
 </div>
 
 <div class="footer">

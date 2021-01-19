@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
     <title>Court</title>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
+    <link rel="stylesheet" th:href="@{/css/tennisex.css}"/>
 </head>
+
 <body>
+
+<!-- HEADER -->
+<div th:replace="header :: header"></div>
+
 <div align="center">
-    <h1>Court</h1>
-    <p>
-        <a href="/court_list">court list</a>
-        <br/>
-    </p>
-    <p>
-        Name: <a th:text="${court.name}">Court Name</a>
-        </br>
-        Address: <a th:text="${court.address}">Court Name</a>
+
+    <h1 th:text="${court.name}">Court Name</h1>
+
+    <div>
+        Address: <a th:text="${court.address}">Court Address</a>
         </br>
         Open: <a th:text="${court.getOpeningHours()}">0:00 - 0:00</a>
         </br>
-    </p>
-    <h3>Timetable</h3>
+    </div>
+
+    <h2>Timetable</h2>
+
     <table border="1" cellpadding="10">
+
         <thead>
         <tr>
             <th>HOUR</th>
@@ -32,18 +40,35 @@
             <th>Friday</th>
         </tr>
         </thead>
+
         <tbody>
-        <tr th:each="hour, hourId : ${court.timetable}">
+        <tr th:each="row, hourId : ${court.timetable}">
             <td th:text="${hourId.index + court.openingHour}">Hour</td>
-            <td th:each="day, dayId : ${hour}">
-                <a th:switch="${day}">
+            <td th:each="booking, dayId : ${row}">
+
+                <!-- FOR CLIENTS -->
+                <a sec:authorize="hasRole('ROLE_CLIENT')" th:switch="${booking}">
                     <a th:case="null"
-                       th:href="@{/timetable/{id}/save_booking(id=${court.getId()}, day=${dayId.index}, hour=${hourId.index+court.openingHour})}">free</a>
+                       th:href="@{/court/{id}/book
+                       (id=${court.getId()},
+                        client=${#authentication.getPrincipal().getUsername()},
+                        day=${dayId.index},
+                         hour=${hourId.index+court.openingHour})}">free</a>
                     <a th:case="*">taken</a>
                 </a>
+
+                <!-- FOR ADMINS -->
+                <a sec:authorize="hasRole('ROLE_ADMIN')" th:switch="${booking}">
+                    <a th:case="null">free</a>
+                    <a th:case="*">
+                        Client <a th:text="${booking.clientId}">id</a>
+                    </a>
+                </a>
+
             </td>
         </tr>
         </tbody>
+
     </table>
 </div>
 </body>
