@@ -1,0 +1,27 @@
+body, html {
+	height: 100%;
+}
+
+/*zdjecie headera*/
+.hero-image{
+  /*przyciemnienie*/
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("hero1.jpg");
+  /* https://www.cocojamaica.com/wp-content/uploads/2020/11/Round-HIll-Tennis-scaled.jpg */
+  height: 20%;
+
+  /*skalowanie*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/*tekst na headerze*/
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}

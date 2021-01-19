@@ -10,13 +10,14 @@
 </head>
 <body>
 
+
 <div style="width: 100%">
     <div th:fragment="header">
 
         <!-- left panel -->
         <div align="left">
             <div>
-                <a th:href="@{/court_list}">Courts</a>
+                <a th:href="@{/court/list}">Courts</a>
             </div>
             <div sec:authorize="hasRole('ROLE_CLIENT')">
                 <a th:href="@{/client}">Client</a>
@@ -30,7 +31,7 @@
         <div align="center">
             <div id="logo">
                 <a href="/">
-                    <img th:src="@{/logo.png}"/>
+                    <img th:src="@{/hero1.png}" height=10%/>
                 </a>
             </div>
         </div>
