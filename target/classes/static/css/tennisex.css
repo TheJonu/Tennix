@@ -3,8 +3,9 @@
   left: 0;
   text-align: center;
   width: 100%;
-  background-color: gray;
-  color: black;
+  background-color: #38383b;
+  color: white;
+  padding: 7px 7px;
 }
 
 body, html {
@@ -29,8 +30,39 @@ body, html {
   transform: translate(-50%, -50%);
   color: white;
 }
+
 .form{
 	border: 3px solid #f1f1f1;	
+}
+
+.header{
+    border: 3px solid transparent;
+    padding: 3px;
+}
+
+a.button{
+    display: inline-block;
+    min-width: 15%;
+    background-color: #38383b;
+    padding: 9px 9px;
+    margin: 3px 3px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    letter-spacing: 2px;
+}
+
+.okbtn {
+  width: 40%;
+  padding: 10px 18px;
+  background-color: #4CAF50;
+}
+
+.cancelbtn {
+  width: 40%;
+  padding: 10px 18px;
+  background-color: #f44336;
 }
 
 input[type=text]{
@@ -51,30 +83,37 @@ input[type=password] {
   box-sizing: border-box;
 }
 
-button {
-  width: 10%;
-  background-color: #38383b;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: 3px;
-  cursor: pointer;
-}
-
 .button:hover {
   opacity: 0.8;
 }
 
-.okbtn {
-  width: 40%;
-  padding: 10px 18px;
-  background-color: #4CAF50;
+button {
+  width: 200px;
+  background-color: #38383b;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px;
+  border: 3px;
+  cursor: pointer;
 }
 
-.cancelbtn {
-  width: 40%;
-  padding: 10px 18px;
-  background-color: #f44336;
+table {
+    border: 0px;
+    border-collapse: separate;
+    border-spacing: 0px 9px;
+}
+
+tr {
+    background-color: #e3e3e3;
+}
+
+td {
+    border: 0px;
+}
+
+th {
+    border: 0px;
+    background-color: white;
 }
 
 ul {

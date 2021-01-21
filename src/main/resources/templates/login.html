@@ -13,6 +13,7 @@
 <!-- HEADER -->
 <div th:replace="header :: header"></div>
 
+<!-- IMAGE -->
 <div class="hero-image">
 	<div class="hero-text">
 		<h1>Tennix Tennis Club</h1>
@@ -28,32 +29,32 @@
 </div>
 
 <div align="center">
-    <h2>Login</h2>
-    <form th:action="@{/login}" method="post">
-    
-        <div class="container">
-            <label for="username"><b>Username</b></label><br>
-            <input type="text" id="username" name="username" placeholder="Enter your username" autofocus="autofocus" required/>
-            <br>
-            <label for="password"><b>Password</b></label><br>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required>
-			<br>
 
-        </div>
+    <h1>Login</h1>
+
+    <form th:action="@{/login}" method="post">
         <div class="container">
-            <button type="submit" class="okbtn">Login</button>
-            <br/>
-    		<button type="button" class="cancelbtn" onclick="location.href = '/'">Cancel</button>
-    	</div>
+            <div>
+                <label for="username">Username</label>
+                <br/>
+                <input type="text" id="username" name="username" placeholder="Enter your username" autofocus="autofocus" required/>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <br/>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div>
+                <button type="submit" class="okbtn">Login</button>
+                <br/>
+                <button type="button" class="cancelbtn" onclick="location.href = '/'">Cancel</button>
+            </div>
+        </div>
     </form>
 </div>
 
-<div class="footer">
-	<p>Tennix Tennis Club<br>
-	42 Backhand Street, Lazytown<br>
-	Call us: 123 456 789<br>
-	<a href="mailto:reception@tennix.com">reception@tennix.com</a></p>
-</div>
+<!-- FOOTER -->
+<div th:replace="footer :: footer"></div>
 
 </body>
 </html>

@@ -15,6 +15,13 @@
 <!-- HEADER -->
 <div th:replace="header :: header"></div>
 
+<!-- IMAGE -->
+<div class="hero-image">
+    <div class="hero-text">
+        <h1>Tennix Tennis Club</h1>
+    </div>
+</div>
+
 <div align="center">
 
     <h1 th:text="${court.name}">Court Name</h1>
@@ -71,5 +78,9 @@
 
     </table>
 </div>
+
+<!-- FOOTER -->
+<div th:replace="footer :: footer"></div>
+
 </body>
 </html>

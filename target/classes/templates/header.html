@@ -3,52 +3,29 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
     <title>Header</title>
     <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
     <link rel="stylesheet" th:href="@{/css/tennisex.css}"/>
 </head>
+
 <body>
 
+<div class="header" align="center" th:fragment="header">
 
-<div style="width: 100%">
-    <div th:fragment="header">
+    <a class="button" th:href="@{/court/list}">COURTS</a>
+    <a class="button" href="/">TENNIX</a>
 
-        <!-- left panel -->
-        <a th:href="@{/court/list}">
-            <button type="button">COURTS</button>
-        </a>
-        <a sec:authorize="hasRole('ROLE_CLIENT')" th:href="@{/client}">
-            <button type="button">Client</button>
-        </a>
-        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">
-            <button>ADMIN</button>
-        </a>
+    <a class="button" sec:authorize="isAnonymous()" th:href="@{/login}">LOG IN</a>
+    <a class="button" sec:authorize="isAnonymous()" th:href="@{/register}">REGISTER</a>
 
-        <!-- central panel -->
-        <a href="/">
-            <img src="images/hero1.png" alt="LOGO" height="10%">
-        </a>
+    <a class="button" sec:authorize="hasRole('ROLE_CLIENT')" th:href="@{/client}">CLIENT</a>
+    <a class="button" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">ADMIN</a>
+    <a class="button" sec:authorize="isAuthenticated()" th:href="@{/logout}">LOG OUT</a>
 
-        <!-- right panel -->
-        <!-- when not logged in -->
-        <a sec:authorize="isAnonymous()">
-            <a th:href="@{/login}">
-                <button type="button">LOG IN</button>
-            </a>
-            <a th:href="@{/register}">
-                <button type="button">REGISTER</button>
-            </a>
-        </a>
-        <!-- when logged in -->
-        <a sec:authorize="isAuthenticated()">
-            <a sec:authentication="name">Username</a>
-            <a th:href="@{/logout}">
-                <button type="button">LOG OUT</button>
-            </a>
-        </a>
-    </div>
 </div>
+
 </body>
 </html>

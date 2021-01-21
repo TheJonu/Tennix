@@ -55,4 +55,8 @@ public class UserService implements UserDetailsService {
         User user = getById(id);
         delete(user);
     }
+
+    public void update(User user){
+        userRepository.save(user);
+    }
 }

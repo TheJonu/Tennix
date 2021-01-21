@@ -15,10 +15,11 @@
 <!-- HEADER -->
 <div th:replace="header :: header"></div>
 
+<!-- IMAGE -->
 <div class="hero-image">
-	<div class="hero-text">
-		<h1>Tennix Tennis Club</h1>
-	</div>
+    <div class="hero-text">
+        <h1>Tennix Tennis Club</h1>
+    </div>
 </div>
 
 <div align="center">
@@ -33,41 +34,38 @@
                 <input type="text" id="username" th:field="*{username}" placeholder="Enter your username" required/>
             </div>
             <div>
-                <label for="password">Password</label>
+                <label class="label" for="password">Password</label>
                 <br/>
                 <input type="password" id="password" th:field="*{password}" placeholder="Enter your password" required>
             </div>
             <div>
-                <label for="name">Full Name</label>
+                <label class="label" for="name">Full Name</label>
                 <br/>
                 <input type="text" id="name" th:field="*{name}" placeholder="Enter your full name" required>
             </div>
             <div>
-                <label for="email">E-mail</label>
+                <label class="label" for="email">E-mail</label>
                 <br/>
                 <input type="text" id="email" th:field="*{email}" placeholder="Enter your e-mail">
             </div>
             <div sec:authorize="hasRole('ROLE_ADMIN')">
-                <label for="role">Role</label>
+                <label class="label" for="role">Role</label>
                 <br/>
                 <input type="text" id="role" th:field="*{role}" placeholder="Enter your role">
             </div>
-        </div>
-        <div class="container">
             <button type="submit" class="okbtn">Register</button>
             <br/>
             <button type="button" class="cancelbtn" onclick="location.href = '/'">Cancel</button>
+        </div>
+        <div class="container">
+
     	</div>
     </form>
 
 </div>
 
-<div class="footer">
-	<p>Tennix Tennis Club<br>
-	42 Backhand Street, Lazytown<br>
-	Call us: 123 456 789<br>
-	<a href="mailto:reception@tennix.com">reception@tennix.com</a></p>
-</div>
+<!-- FOOTER -->
+<div th:replace="footer :: footer"></div>
 
 </body>
 </html>

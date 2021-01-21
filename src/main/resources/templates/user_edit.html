@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Court</title>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
+    <link rel="stylesheet" th:href="@{/css/tennisex.css}"/>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div th:replace="header :: header"></div>
+
+<!-- IMAGE -->
+<div class="hero-image">
+    <div class="hero-text">
+        <h1>Tennix Tennis Club</h1>
+    </div>
+</div>
+
+<div align="center">
+
+    <h1>Edit User</h1>
+
+    <form action="#"
+          th:action="@{/user/edit}"
+          th:object="${user}"
+          method="post">
+        <table border="1" cellpadding="10">
+            <tr>
+                <td>Username:</td>
+                <td><input type="text" th:field="*{username}"></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" th:field="*{password}"></td>
+            </tr>
+            <tr>
+                <td>Full name:</td>
+                <td><input type="text" th:field="*{name}"></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="text" th:field="*{email}"></td>
+            </tr>
+        </table>
+        <div class="container">
+            <button type="submit" class="okbtn">Update</button>
+            <br/>
+            <button type="button" class="cancelbtn" onclick="location.href = '/'">Cancel</button>
+        </div>
+    </form>
+
+</div>
+
+<!-- FOOTER -->
+<div th:replace="footer :: footer"></div>
+
+</body>
+</html>

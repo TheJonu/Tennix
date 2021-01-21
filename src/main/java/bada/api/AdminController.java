@@ -68,7 +68,7 @@ public class AdminController {
         return mav;
     }
 
-    @PostMapping(value = "/edit_court")
+    @PostMapping("/edit_court")
     public String updateCourt(@ModelAttribute("court") Court court){
         courtsDAO.update(court);
         return "redirect:/court/list";
