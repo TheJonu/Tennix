@@ -1,15 +1,23 @@
-.footer {
-  bottom: 0;
-  left: 0;
-  text-align: center;
-  width: 100%;
-  background-color: #38383b;
-  color: white;
-  padding: 7px 7px;
-}
-
 body, html {
     height: 100%;
+    align: center;
+    text-align: center;
+}
+
+h1 {
+    font-family: "Garamond";
+}
+
+h2 {
+    font-family: "Garamond";
+}
+
+h3 {
+    font-family: "Garamond";
+}
+
+a {
+    color: #7099ff;
 }
 
 .hero-image {
@@ -31,8 +39,35 @@ body, html {
   color: white;
 }
 
+.content {
+    align: center;
+    text-align: center;
+    font-family: "Verdana";
+    padding: 25px;
+}
+
+.container {
+    align: center;
+    text-align: center;
+    border: 15px;
+}
+
 .form{
-	border: 3px solid #f1f1f1;	
+	border: 3px solid #f1f1f1;
+}
+
+.label {
+    font-family: "Garamond";
+    display: inline-block;
+    width: 120px;
+    background-color: #38383b;
+    color: white;
+    padding: 9px 9px;
+    letter-spacing: 2px;
+}
+
+.action {
+    display: block;
 }
 
 .header{
@@ -40,7 +75,18 @@ body, html {
     padding: 3px;
 }
 
+.footer {
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  background-color: #38383b;
+  color: white;
+  padding: 7px 7px;
+}
+
 a.button{
+    font-family: "Garamond";
     display: inline-block;
     min-width: 15%;
     background-color: #38383b;
@@ -54,20 +100,24 @@ a.button{
 }
 
 .okbtn {
-  width: 40%;
-  padding: 10px 18px;
-  background-color: #4CAF50;
+    width: 40%;
+    padding: 10px 18px;
+    background-color: #4CAF50;
+    display: block;
+    margin: 9px auto;
 }
 
 .cancelbtn {
-  width: 40%;
-  padding: 10px 18px;
-  background-color: #f44336;
+    width: 40%;
+    padding: 10px 18px;
+    background-color: #f44336;
+    display: block;
+    margin: 9px auto;
 }
 
 input[type=text]{
   width: 40%;
-  padding: 12px 20px;
+  padding: 9px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
@@ -76,7 +126,7 @@ input[type=text]{
 
 input[type=password] {
   width: 40%;
-  padding: 12px 20px;
+  padding: 9px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
@@ -98,13 +148,14 @@ button {
 }
 
 table {
+    margin: 0 auto;
     border: 0px;
     border-collapse: separate;
-    border-spacing: 0px 9px;
+    border-spacing: 0px 3px;
 }
 
 tr {
-    background-color: #e3e3e3;
+    background-color: #f0f0f0;
 }
 
 td {
@@ -112,8 +163,13 @@ td {
 }
 
 th {
-    border: 0px;
-    background-color: white;
+    border: 0;
+    font-family: "Garamond";
+    min-width: 120px;
+    background-color: #38383b;
+    color: white;
+    padding: 9px 9px;
+    letter-spacing: 2px;
 }
 
 ul {

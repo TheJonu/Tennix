@@ -20,34 +20,35 @@
 	</div>
 </div>
 
+<!--
 <div align="center" th:if="${param.error}">
     Invalid username or password.
 </div>
-
 <div align="center" th:if="${param.logout}">
     You have been logged out successfully.
 </div>
+-->
 
-<div align="center">
+<!-- CONTENT -->
+<div class="content">
 
     <h1>Login</h1>
 
     <form th:action="@{/login}" method="post">
-    
-        <div class="container">
-            <label for="username"><b>Username</b></label><br>
+        <div>
+            <label class="label" for="username">Username</label>
             <input type="text" id="username" name="username" placeholder="Enter your username" autofocus="autofocus" required/>
-            <br>
-            <label for="password"><b>Password</b></label><br>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required>
-			<br>
         </div>
-        <div class="container">
+        <div>
+            <label class="label" for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <div>
             <button type="submit" class="okbtn">Login</button>
-            <br/>
-    		<button type="button" class="cancelbtn" onclick="location.href = '/'">Cancel</button>
-    	</div>
+            <button type="button" class="cancelbtn" onclick="location.href = '/'">Cancel</button>
+        </div>
     </form>
+
 </div>
 
 <!-- FOOTER -->
