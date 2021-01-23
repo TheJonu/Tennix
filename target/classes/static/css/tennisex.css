@@ -66,10 +66,6 @@ a {
     letter-spacing: 2px;
 }
 
-.action {
-    display: block;
-}
-
 .header{
     border: 3px solid transparent;
     padding: 3px;
@@ -83,6 +79,20 @@ a {
   background-color: #38383b;
   color: white;
   padding: 7px 7px;
+}
+
+a.action {
+    font-family: "Garamond";
+    display: inline-block;
+    min-width: 90px;
+    background-color: #38383b;
+    color: white;
+    padding: 9px 9px;
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: 0.8;
 }
 
 a.button{
@@ -137,6 +147,10 @@ input[type=password] {
   opacity: 0.8;
 }
 
+button:hover {
+    opacity: 0.8;
+}
+
 button {
   width: 200px;
   background-color: #38383b;
@@ -165,7 +179,7 @@ td {
 th {
     border: 0;
     font-family: "Garamond";
-    min-width: 120px;
+    min-width: 60px;
     background-color: #38383b;
     color: white;
     padding: 9px 9px;

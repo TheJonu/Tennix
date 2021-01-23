@@ -25,16 +25,16 @@
 <!-- CONTENT -->
 <div class="content">
 
-    <h1 th:text="${court.name}">Court Name</h1>
+    <h2 th:text="${court.name}">Court Name</h2>
 
     <div>
-        Address: <a th:text="${court.address}">Court Address</a>
+        Address: <span th:text="${court.address}">Court Address</span>
         </br>
-        Open: <a th:text="${court.getOpeningHours()}">0:00 - 0:00</a>
+        Open: <span th:text="${court.getOpeningHours()}">0:00 - 0:00</span>
         </br>
     </div>
 
-    <h2>Timetable</h2>
+    <h3>Timetable</h3>
 
     <table border="1" cellpadding="10">
 
