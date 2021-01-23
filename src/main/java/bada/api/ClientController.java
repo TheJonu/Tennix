@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @Controller
@@ -39,5 +40,9 @@ public class ClientController {
         return mav;
     }
 
-
+    @RequestMapping("/cancel")
+    public String cancelBooking(@PathParam("id") int id){
+        bookingsDao.delete(id);
+        return "redirect:/client";
+    }
 }

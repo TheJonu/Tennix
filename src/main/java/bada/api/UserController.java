@@ -14,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.websocket.server.PathParam;
+
 @Controller
 @RequestMapping("/user")
 @PreAuthorize("isAuthenticated()")
@@ -26,7 +28,6 @@ public class UserController {
     @Autowired
     private CourtsDao courtsDAO;
 
-    // does not work currently
 
     @GetMapping("/edit")
     public ModelAndView showUserEdit(){
@@ -38,8 +39,8 @@ public class UserController {
     }
 
     @PostMapping("/edit")
-    public String updateUser(@ModelAttribute("user") User user){
-        userService.update(user);
+    public String updateUser(@ModelAttribute("user") User user, @PathParam("id") int id){
+        userService.update(user, id);
         return "redirect:/";
     }
 }

@@ -7,10 +7,14 @@ import bada.model.User;
 import bada.dao.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.websocket.server.PathParam;
 
 @Controller
 @RequestMapping("/admin")
@@ -43,6 +47,20 @@ public class AdminController {
     public String deleteUser(@PathVariable(name = "id") int id){
         userService.delete(id);
         return "redirect:/admin/users";
+    }
+
+    @GetMapping("/edit_user/{id}")
+    public ModelAndView showUserEdit(@PathVariable("id") int id){
+        User user = userService.getById(id);
+        ModelAndView mav = new ModelAndView("user_edit");
+        mav.addObject("user", user);
+        return mav;
+    }
+
+    @PostMapping("/edit_user/{id}")
+    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") int id){
+        userService.update(user, id);
+        return "redirect:/";
     }
 
     // COURTS

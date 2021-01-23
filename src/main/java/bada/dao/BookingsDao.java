@@ -38,4 +38,9 @@ public class BookingsDao {
         insertActor.execute(param);
     }
 
+    public void delete(int id) {
+        String sql = "DELETE FROM Bookings WHERE id = ?";
+        jdbcTemplate.update(sql, id);
+    }
+
 }

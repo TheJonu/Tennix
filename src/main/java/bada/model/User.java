@@ -6,6 +6,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
@@ -72,8 +73,8 @@ public class User implements UserDetails {
     public String getPassword() { return password; }
 
     public Integer getId() { return id; }
+    public void setId(int id) { this.id = id; }
     public void setPassword(String value) {password = value;}
-
 
     @Override
     public boolean isAccountNonExpired() {

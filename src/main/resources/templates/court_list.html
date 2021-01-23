@@ -26,30 +26,34 @@
 
     <h2>Court List</h2>
 
+    <span sec:authorize="isAnonymous()">
+        Log in or register to view timetables.
+    </span>
+
     <table border="1" cellpadding="10">
         <thead>
         <tr>
+            <th>IMAGE</th>
             <th sec:authorize="hasRole('ADMIN')">ID</th>
             <th>NAME</th>
             <th>ADDRESS</th>
             <th>OPEN</th>
             <th sec:authorize="isAuthenticated()">ACTIONS</th>
-            <th>IMAGE</th>
         </tr>
         </thead>
 
         <tbody>
         <tr th:each="court : ${courtList}">
             <td sec:authorize="hasRole('ADMIN')" th:text="${court.id}">ID</td>
+            <td><img th:src="@{/images/{src}(src=${court.getImageSrc()})}" alt="no photo" height=90 width=160></td>
             <td th:text="${court.name}">Name</td>
             <td th:text="${court.address}">Address</td>
             <td th:text="${court.getOpeningHours()}">Open</td>
             <td sec:authorize="isAuthenticated()">
-                <a class="action" th:href="@{/court/{id}(id=${court.id})}">MORE</a>
+                <a class="action" th:href="@{/court/{id}(id=${court.id})}">TIMETABLE</a>
                 <a class="action" sec:authorize="hasRole('ADMIN')" th:href="@{/admin/edit_court/{id}(id=${court.id})}">EDIT</a>
                 <a class="action" sec:authorize="hasRole('ADMIN')" th:href="@{/admin/delete_court/{id}(id=${court.id})}">DELETE</a>
             </td>
-            <td><img th:src="@{/images/{src}(src=${court.getImageSrc()})}" alt="no photo" height=90 width=160></td>
         </tr>
         </tbody>
     </table>

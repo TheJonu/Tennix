@@ -56,7 +56,9 @@ public class UserService implements UserDetailsService {
         delete(user);
     }
 
-    public void update(User user){
+    public void update(User user, int id){
+        user.setId(id);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 }

@@ -27,12 +27,12 @@
 
     <h2 th:text="${court.name}">Court Name</h2>
 
-    <div>
+    <span>
         Address: <span th:text="${court.address}">Court Address</span>
-        </br>
+        <br/>
         Open: <span th:text="${court.getOpeningHours()}">0:00 - 0:00</span>
-        </br>
-    </div>
+        <br/>
+    </span>
 
     <h3>Timetable</h3>
 
@@ -55,23 +55,23 @@
             <td th:each="booking, dayId : ${row}">
 
                 <!-- FOR CLIENTS -->
-                <a sec:authorize="hasRole('ROLE_CLIENT')" th:switch="${booking}">
+                <span sec:authorize="hasRole('ROLE_CLIENT')" th:switch="${booking}">
                     <a th:case="null"
                        th:href="@{/court/{id}/book
                        (id=${court.getId()},
                         client=${#authentication.getPrincipal().getUsername()},
                         day=${dayId.index},
                          hour=${hourId.index+court.openingHour})}">free</a>
-                    <a th:case="*">taken</a>
-                </a>
+                    <span th:case="*">taken</span>
+                </span>
 
                 <!-- FOR ADMINS -->
-                <a sec:authorize="hasRole('ROLE_ADMIN')" th:switch="${booking}">
-                    <a th:case="null">free</a>
-                    <a th:case="*">
-                        Client <a th:text="${booking.userId}">id</a>
-                    </a>
-                </a>
+                <span sec:authorize="hasRole('ROLE_ADMIN')" th:switch="${booking}">
+                    <span th:case="null">free</span>
+                    <span th:case="*">
+                        Client <span th:text="${booking.userId}">id</span>
+                    </span>
+                </span>
 
             </td>
         </tr>

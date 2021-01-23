@@ -46,11 +46,10 @@ public class CourtController {
     @RequestMapping("/{id}/book")
     public String book(@PathVariable int id, @PathParam("client") String client, @PathParam("day") int day, @PathParam("hour") int hour){
         int userId = userService.getByUsername(client).getId();
-        System.out.println(id);
-        System.out.println(client);
-        System.out.println(userId);
         Booking booking = new Booking(day, hour, id, userId);
         bookingsDao.save(booking);
         return "redirect:/court/" + booking.getCourtId();
     }
+
+
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -26,33 +27,33 @@
 
     <h2>Edit User</h2>
 
-    <form action="#"
-          th:action="@{/user/edit}"
-          th:object="${user}"
-          method="post">
-        <table border="1" cellpadding="10">
-            <tr>
-                <td>Username:</td>
-                <td><input type="text" th:field="*{username}"></td>
-            </tr>
-            <tr>
-                <td>Password:</td>
-                <td><input type="password" th:field="*{password}"></td>
-            </tr>
-            <tr>
-                <td>Full name:</td>
-                <td><input type="text" th:field="*{name}"></td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td><input type="text" th:field="*{email}"></td>
-            </tr>
-        </table>
-        <div class="container">
-            <button type="submit" class="okbtn">Update</button>
-            <br/>
-            <button type="button" class="cancelbtn" onclick="location.href = '/'">Cancel</button>
+    <form action="#" th:action="@{/user/edit(id=${user.id})}" th:object="${user}" method="post">
+        <div>
+            <label class="label">ID</label>
+            <input type="text" th:field="*{id}" disabled>
         </div>
+        <div>
+            <label class="label">Username</label>
+            <input type="text" th:field="*{username}">
+        </div>
+        <div>
+            <label class="label">Password</label>
+            <input type="password" th:field="*{password}">
+        </div>
+        <div>
+            <label class="label">Full name</label>
+            <input type="text" th:field="*{name}">
+        </div>
+        <div>
+            <label class="label">Email</label>
+            <input type="text" th:field="*{email}">
+        </div>
+        <div sec:authorize="hasRole('ADMIN')">
+            <label class="label">Role</label>
+            <input type="text" th:field="*{role}">
+        </div>
+        <button type="submit" class="okbtn">Update</button>
+        <button type="button" class="cancelbtn" onclick="location.href = '/'">Cancel</button>
     </form>
 
 </div>

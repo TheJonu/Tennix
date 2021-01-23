@@ -26,6 +26,16 @@
 
     <h2 th:text="${client.name}">Full Name</h2>
 
+    <span>
+        Username: <span th:text="${client.username}">Username</span>
+        <br/>
+        E-mail: <span th:text="${client.email}">Email</span>
+        <br/>
+    </span>
+    <br/>
+
+    <a class="action" href="/user/edit">EDIT DETAILS</a>
+
     <h3>My Bookings</h3>
 
     <table border="1" cellpadding="10">
@@ -45,9 +55,9 @@
             <td align="center" th:text="${booking.id}">ID</td>
             <td th:text="${booking.getDayName()}">Day</td>
             <td th:text="${booking.getCourtName()}">Court name</td>
-            <td> <a th:text="${booking.hour}">0</a>:00-<a th:text="${booking.hour+1}">0</a>:00</td>
+            <td> <span th:text="${booking.hour}">0</span>:00-<span th:text="${booking.hour+1}">0</span>:00</td>
             <td>
-                <a th:href="@{/bookings/{id}/cancel(id=${client.id})}">Cancel</a>
+                <a class="action" th:href="@{/client/cancel(id=${booking.id})}">Cancel</a>
             </td>
         </tr>
         </tbody>
