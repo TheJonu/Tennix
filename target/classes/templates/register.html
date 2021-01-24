@@ -8,6 +8,8 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
 	<link rel="stylesheet" th:href="@{/css/tennisex.css}"/>
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16" />
 </head>
 
 <body>
@@ -30,7 +32,7 @@
     <form th:action="@{/register}" th:object="${user}" th:method="post">
         <div>
             <label class="label" for="username">Username</label>
-            <input type="text" id="username" th:field="*{username}" placeholder="Enter your username" required/>
+            <input type="text" id="username" th:field="*{usernames}" placeholder="Enter your username" required/>
         </div>
         <div>
             <label class="label" for="password">Password</label>
