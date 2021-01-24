@@ -29,19 +29,19 @@
     <form action="#" th:action="@{/admin/new_court}" th:object="${court}" method="post">
         <div>
             <label class="label">Name</label>
-            <input type="text" th:field="*{name}">
+            <input type="text" th:field="*{name}" required>
         </div>
         <div>
             <label class="label">Address</label>
-            <input type="text" th:field="*{address}">
+            <input type="text" th:field="*{address}" required>
         </div>
         <div>
             <label class="label">Open</label>
-            <input type="text" th:field="*{openingHour}">
+            <input type="text" th:field="*{openingHour}" required>
         </div>
         <div>
             <label class="label">Close</label>
-            <input type="text" th:field="*{closingHour}">
+            <input type="text" th:field="*{closingHour}" required>
         </div>
         <div>
             <label class="label">Photo</label>

@@ -31,6 +31,8 @@ public class Court {
     // set the timetable according to existing bookings
     public void refreshTimetable(List<Booking> bookings){
         int hoursCount = closingHour-openingHour;
+        if(hoursCount < 0)
+            hoursCount = 0;
         timetable = new Booking[hoursCount][5];
         for(int i=0; i<bookings.size(); i++){
              Booking booking = bookings.get(i);

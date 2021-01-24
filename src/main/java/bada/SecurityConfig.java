@@ -48,10 +48,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login").permitAll()
                 .failureUrl("/login?error=true")
-                .defaultSuccessUrl("/", true)
+                .defaultSuccessUrl("/?login=true", true)
                 .and()
                 .logout()
-                .logoutSuccessUrl("/");
+                .logoutSuccessUrl("/?logout=true");
     }
 
     @Autowired
@@ -61,5 +61,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("admin").password(passwordEncoder.encode("admin")).roles("ADMIN")
                 .and()
                 .withUser("client").password(passwordEncoder.encode("client")).roles("CLIENT");
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(10);
     }
 }

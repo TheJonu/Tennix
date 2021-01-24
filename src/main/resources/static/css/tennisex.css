@@ -77,14 +77,13 @@ span {
 .header{
     border: 3px solid transparent;
     padding: 3px;
-    background-color: #636369;
+    background-color: #f0f0f0;
 }
 
 .footer {
-
   height: 60;
   text-align: center;
-  background-color: #636369;
+  background-color: #38383b;
   color: white;
   padding: 7px 7px;
   font-family: "Verdana";

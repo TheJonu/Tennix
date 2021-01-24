@@ -2,6 +2,7 @@ package bada.api;
 
 import bada.dao.BookingsDao;
 import bada.dao.CourtsDao;
+import bada.model.Booking;
 import bada.model.Court;
 import bada.model.User;
 import bada.dao.UserService;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.websocket.server.PathParam;
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
@@ -30,8 +32,12 @@ public class AdminController {
 
 
     @GetMapping
-    public String showAdminView(){
-        return "admin";
+    public ModelAndView showAdminView(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.getByUsername(authentication.getName());
+        ModelAndView mav = new ModelAndView("admin");
+        mav.addObject("admin", user);
+        return mav;
     }
 
     // USERS
@@ -57,11 +63,13 @@ public class AdminController {
         return mav;
     }
 
+    /*
     @PostMapping("/edit_user/{id}")
     public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") int id){
         userService.update(user, id);
         return "redirect:/";
     }
+     */
 
     // COURTS
 
@@ -86,8 +94,9 @@ public class AdminController {
         return mav;
     }
 
-    @PostMapping("/edit_court")
-    public String updateCourt(@ModelAttribute("court") Court court){
+    @PostMapping("/edit_court/{id}")
+    public String updateCourt(@ModelAttribute("court") Court court, @PathVariable("id") int id){
+        court.setId(id);
         courtsDAO.update(court);
         return "redirect:/court/list";
     }
