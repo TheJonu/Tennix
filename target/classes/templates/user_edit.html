@@ -52,6 +52,10 @@
             <label class="label">Role</label>
             <input type="text" th:field="*{role}">
         </div>
+        <div sec:authorize="hasRole('ADMIN')">
+            <label class="label">Reg date</label>
+            <input type="text" th:field="*{regDate}">
+        </div>
         <button type="submit" class="okbtn">Update</button>
         <button type="button" class="cancelbtn" onclick="location.href = '/'">Cancel</button>
     </form>

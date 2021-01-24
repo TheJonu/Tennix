@@ -49,6 +49,7 @@
             <td th:text="${user.email}">Email</td>
             <td th:text="${user.regDate}">Reg Date</td>
             <td>
+                <a class="action" th:href="@{/admin/edit_user/{id}(id=${user.id})}">EDIT</a>
                 <a class="action" th:href="@{/admin/delete_user/{id}(id=${user.id})}">DELETE</a>
             </td>
         </tr>
