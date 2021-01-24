@@ -45,7 +45,7 @@
         <tbody>
         <tr th:each="court : ${courtList}">
             <td sec:authorize="hasRole('ADMIN')" th:text="${court.id}">ID</td>
-            <td><img th:src="@{/images/{src}(src=${court.getImageSrc()})}" alt="no photo" height=90 width=160></td>
+            <td><img th:src="@{{src}(src=${court.getImageSrc()})}" alt="no photo" height=90 width=160></td>
             <td th:text="${court.name}">Name</td>
             <td th:text="${court.address}">Address</td>
             <td th:text="${court.getOpeningHours()}">Open</td>
