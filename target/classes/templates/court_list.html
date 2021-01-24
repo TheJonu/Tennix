@@ -11,15 +11,15 @@
 
 <body>
 
-<!-- HEADER -->
-<div th:replace="header :: header"></div>
-
 <!-- IMAGE -->
 <div class="hero-image">
     <div class="hero-text">
         <h1>Tennix Tennis Club</h1>
     </div>
 </div>
+
+<!-- HEADER -->
+<div th:replace="header :: header"></div>
 
 <!-- CONTENT -->
 <div class="content">
@@ -29,12 +29,12 @@
     <span sec:authorize="isAnonymous()">
         Log in or register to view timetables.
     </span>
-
+	<div style="height:300px;overflow:auto;">
     <table border="1" cellpadding="10">
         <thead>
         <tr>
+        	<th sec:authorize="hasRole('ADMIN')">ID</th>
             <th>IMAGE</th>
-            <th sec:authorize="hasRole('ADMIN')">ID</th>
             <th>NAME</th>
             <th>ADDRESS</th>
             <th>OPEN</th>
@@ -57,6 +57,7 @@
         </tr>
         </tbody>
     </table>
+    </div>
 </div>
 
 <!-- FOOTER -->

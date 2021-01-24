@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Admin Panel</title>
+    <title>Wystąpił błąd</title>
     <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
     <link rel="stylesheet" th:href="@{/css/tennisex.css}"/>
 </head>
@@ -21,19 +21,21 @@
 <!-- HEADER -->
 <div th:replace="header :: header"></div>
 
-
-
-<!-- CONTENT -->
+<!-- ERROR INFO -->
 <div class="content">
 
-    <h2>Admin Panel</h2>
-
-    <a class="action" href="/admin/users">USER LIST</a>
-    <a class="action" href="/register">REGISTER</a>
-    <br/><br/>
-    <a class="action" href="/admin/new_court">NEW COURT</a>
+    <h2>Error</h2>
+	<img src="/images/error.jpg" alt="There was an error on an error page. sad." height=200xpx>
+    <span>
+        <h3>Unfortunetely an error occured.</h3><br>
+        Please try going back to the previous page.
+        If you think we should know about the issue please send us an email to:
+        <a href="mailto:itdepartment@tennix.com">itdepartment@tennix.com</a>
+        and our professional IT specialists will solve the problem as soon as possible.
+    </span>
 
 </div>
+
 
 <!-- FOOTER -->
 <div th:replace="footer :: footer"></div>

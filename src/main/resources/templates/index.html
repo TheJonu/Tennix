@@ -11,26 +11,76 @@
 
 <body>
 
-<!-- HEADER -->
-<div th:replace="header :: header"></div>
-
 <!-- IMAGE -->
 <div class="hero-image">
     <div class="hero-text">
-        <h1>Tennix Tennis Club</h1>
+     	<h1>Tennix Tennis Club</h1>
     </div>
 </div>
+
+<!-- HEADER -->
+<div th:replace="header :: header"></div>
 
 <!-- CONTENT -->
 <div class="content">
 
-    <h2>TENNIX</h2>
-
+    <h2>Welcome to TENNIX</h2>
     <span>
         - hands down the best club in town -
     </span>
 
 </div>
+
+<!-- SLIDESHOW -->
+<!-- Slideshow container -->
+<div class="slideshow-container">
+
+  <!-- Full-width images with number and caption text -->
+  <div class="mySlides fade">
+    <img src="/images/court_3.jpg" style="width:400px;height:250px">
+    <div class="text">Nasz korty</div>
+  </div>
+
+  <div class="mySlides fade">
+    <img src="/images/members.jpg" style="width:400px;height:250px">
+    <div class="text">Zadowoleni członkowie</div>
+  </div>
+
+  <div class="mySlides fade">
+    <img src="/images/event.jpg" style="width:400px;height:250px">
+    <div class="text">Klubowe eventy</div>
+  </div>
+</div>
+<br>
+
+<!-- The dots/circles -->
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
+
 
 <!-- FOOTER -->
 <div th:replace="footer :: footer"></div>

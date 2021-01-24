@@ -2,7 +2,10 @@ body, html {
     height: 100%;
     align: center;
     text-align: center;
-
+    margin: 0;
+    min-height:100%;
+    position:relative;
+    padding-bottom:60;
 }
 
 h1 {
@@ -74,12 +77,16 @@ span {
 .header{
     border: 3px solid transparent;
     padding: 3px;
+    background-color: #636369;
 }
 
 .footer {
   bottom: 0;
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  height:60;
   text-align: center;
-  background-color: #38383b;
+  background-color: #636369;
   color: white;
   padding: 7px 7px;
   font-family: "Verdana";
@@ -214,4 +221,63 @@ li a {
 
 li a:hover {
   background-color: #111;
+}
+
+/*slideshow*/
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+/* Caption text */
+.text {
+  color: white;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
 }
