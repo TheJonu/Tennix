@@ -32,7 +32,7 @@
     <form th:action="@{/register}" th:object="${user}" th:method="post">
         <div>
             <label class="label" for="username">Username</label>
-            <input type="text" id="username" th:field="*{usernames}" placeholder="Enter your username" required/>
+            <input type="text" id="username" th:field="*{username}" placeholder="Enter your username" required/>
         </div>
         <div>
             <label class="label" for="password">Password</label>
